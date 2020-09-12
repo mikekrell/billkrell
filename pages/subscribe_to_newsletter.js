@@ -16,21 +16,24 @@ export default function Subscribe_to_newsletter({ children, pageTitle, descripti
             if (data.status == 200) {
                 setSuccess(true)
             }else {
-                Toastify({
-                text: "Looks like something went wrong. Maybe you've alreayd signed up before?",
-                duration: 5000, 
-                newWindow: true,
-                close: true,
-                gravity: "bottom", // `top` or `bottom`
-                position: 'center', // `left`, `center` or `right`
-                className: 'notification is-danger',
-                backgroundColor: "#f14668",
-                stopOnFocus: true, // Prevents dismissing of toast on hover
-                onClick: function(){} // Callback after click
-                }).showToast();
+                setAlert("Looks like something went wrong. Maybe you've already signed up before?")
             }
-        })
-        
+        })   
+    }
+    
+    const setAlert = (text) => {
+        Toastify({
+            text: text,
+            duration: 5000,
+            newWindow: true,
+            close: true,
+            gravity: "bottom", // `top` or `bottom`
+            position: 'center', // `left`, `center` or `right`
+            className: 'notification is-danger',
+            backgroundColor: "#f14668",
+            stopOnFocus: true, // Prevents dismissing of toast on hover
+            onClick: function () { } // Callback after click
+        }).showToast();
     }
 
     return (
