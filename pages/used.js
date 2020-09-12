@@ -35,12 +35,12 @@ function Used( {posts, equip} ){
                                 <th>Year</th>
                                 <th>Manufacture</th>
                                 <th>Model</th>
-                                <th>Price</th>
                                 <th>Type</th>
-                                <th>Weekly Rates</th>
-                                <th>Monthly Rates</th>
                                 <th>Hours</th>
                                 <th>Weight</th>
+                                <th>Weekly Rental</th>
+                                <th>Monthly Rental</th>
+                                <th>Price</th>
                             </tr>
                         </thead>
                         <tbody>

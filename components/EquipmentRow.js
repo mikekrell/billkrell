@@ -21,24 +21,17 @@ function EquipmentRow( { equip }){
                 {equip.fields.title}
             </td>
             <td>
-                {equip.fields.price == 0 ? <button className="button is-warning is-small">Call for Quote</button>: <strong>{formatter.format(equip.fields.price)}</strong>}
-            </td>
-            <td>
                 {equip.fields.type}
             </td>
             <td>
-                {equip.fields.weeklyRate}
+                {formatter.format(equip.fields.weeklyRate)}
             </td>
             <td>
-                {equip.fields.monthlyRate}
+                {formatter.format(equip.fields.monthlyRate)}
             </td>
             <td>
-                {equip.fields.hours}
+                {equip.fields.price == 0 ? <button className="button is-warning is-small">Call for Quote</button>: <strong>{formatter.format(equip.fields.price)}</strong>}
             </td>
-            <td>
-                {equip.fields.weight}
-            </td>
-
         </tr>
     )
 }
