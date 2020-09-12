@@ -28,7 +28,7 @@ function Used( {posts, equip} ){
                 </section>
                 <section className="section">
                     <div className="container">
-                    <table className="table is-striped is-hoverable">
+                    <table className="table is-striped is-hoverable is-scrollable">
                         <thead>
                             <tr>
                                 <th></th>
@@ -43,7 +43,7 @@ function Used( {posts, equip} ){
                                 <th>Price</th>
                             </tr>
                         </thead>
-                        <tbody style={{ 'overflowY': 'scroll', 'width': 'auto', 'position': 'absolute'}}>
+                        <tbody>
                             {equip.map((equip, i) => (
                                 <EquipmentRow key={i} equip={equip}></EquipmentRow>
                             ))}
