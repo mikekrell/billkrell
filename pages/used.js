@@ -43,12 +43,11 @@ function Used( {posts, equip} ){
                                 <th>Price</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody style={{ 'overflowY': 'scroll', 'width': 'auto', 'position': 'absolute'}}>
                             {equip.map((equip, i) => (
                                 <EquipmentRow key={i} equip={equip}></EquipmentRow>
                             ))}
                         </tbody>
-
                     </table>
                     </div>
                 </section>
