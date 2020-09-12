@@ -1,18 +1,16 @@
 import Head from 'next/head'
 import Link from 'next/link'
-import useRouter from 'next/router'
-import useSwr from 'swr'
 import Modal from '../components/Modal'
-import React, { useState } from 'react';
+import { useState } from 'react';
 
-// Home.getInitialProps = ctx => {
-//   // We check for ctx.res to make sure we're on the server.
-//   if (ctx.res) {
-//     ctx.res.writeHead(302, { Location: '/used' });
-//     ctx.res.end();
-//   }
-//   return {};
-// }
+Home.getInitialProps = ctx => {
+  // We check for ctx.res to make sure we're on the server.
+  if (ctx.res) {
+    ctx.res.writeHead(302, { Location: '/used' });
+    ctx.res.end();
+  }
+  return {};
+}
 
 export default function Home() {
 
