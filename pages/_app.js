@@ -20,7 +20,7 @@ function MyApp({ Component, pageProps }) {
       <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
           <a className="navbar-item">
-            <img src="Feenaughty_360x.webp" className="image is-16x9" ></img>
+            <img alt="nav-logo" src="Feenaughty_360x.webp" className="image is-16x9" ></img>
           </a>
           <a role="button" onClick={setHamburgerMenu} className={menu ? "navbar-burger burger is-active" : "navbar-burger burger" } aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span ></span>
