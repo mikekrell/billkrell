@@ -24,6 +24,12 @@ function EquipmentRow( { equip }){
                 {equip.fields.type}
             </td>
             <td>
+                {equip.fields.hours}
+            </td>
+            <td>
+                {equip.fields.weight}
+            </td>
+            <td>
                 {formatter.format(equip.fields.weeklyRate)}
             </td>
             <td>
