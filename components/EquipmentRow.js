@@ -27,7 +27,7 @@ function EquipmentRow( { equip }){
                 {equip.fields.hours}
             </td>
             <td>
-                {equip.fields.weight}
+                {equip.fields.weight}lbs
             </td>
             <td>
                 {formatter.format(equip.fields.weeklyRate)}

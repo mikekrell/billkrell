@@ -37,7 +37,7 @@ function Used( {posts, equip} ){
                                 <th>Model</th>
                                 <th>Type</th>
                                 <th>Hours</th>
-                                <th>Weight</th>
+                                <th>Weight(lbs)</th>
                                 <th>Weekly Rental</th>
                                 <th>Monthly Rental</th>
                                 <th>Price</th>
