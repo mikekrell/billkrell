@@ -9,7 +9,7 @@ function EquipmentRow( { equip }){
     return (
         <tr>
             <td>
-                {equip.fields.media !== undefined ? <img src={getImageUrl(equip.fields.media[0])} className="image is-96x96" alt={equip.fields.media[0].fields.file.title}></img> : null}
+                {equip.fields.media !== undefined ? <img src={getImageUrl(equip.fields.media[0])} className="image" width="96" height="auto" alt={equip.fields.title}></img> : null}
             </td>
             <td width="20%">
                 {equip.fields.title}
