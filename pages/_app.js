@@ -38,7 +38,7 @@ function MyApp({ Component, pageProps }) {
           </div>
           <div className="navbar-end">
             <div className="navbar-item">
-              <h2 className="subtitle"><strong className="has-text-success">Bill Krell:</strong> (503)849-8414</h2>
+              <h2 className="subtitle"><strong className="has-text-success">Bill Krell:</strong> (503)956-3956</h2>
             </div>
           </div>
         </div>

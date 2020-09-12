@@ -32,9 +32,9 @@ function Used( {posts, equip} ){
                         <thead>
                             <tr>
                                 <th></th>
-                                <th>Model</th>
                                 <th>Year</th>
                                 <th>Manufacture</th>
+                                <th>Model</th>
                                 <th>Price</th>
                                 <th>Type</th>
                                 <th>Weekly Rates</th>

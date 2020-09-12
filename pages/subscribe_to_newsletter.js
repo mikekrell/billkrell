@@ -1,5 +1,6 @@
 import React, { useState, useRef} from 'react';
 import Head from 'next/head'
+import Link from 'next/link'
 export default function Subscribe_to_newsletter({ children, pageTitle, description, ...props }) {
     const [success, setSuccess] = useState(false)
     const [loading, setLoading] = useState(false)
@@ -122,7 +123,10 @@ export default function Subscribe_to_newsletter({ children, pageTitle, descripti
                     </div> 
                     <div className="hero-body pt-0">
                         <div className="column has-text-centered">
-                            <button style={{ "width": "100%" }} className="button is-warning is-large">See the inventory</button>
+                        <Link href="/used" as="/used">
+                            <a href="" ><button style={{ "width": "100%" }} className="button is-warning is-large">See the inventory</button></a>
+                        </Link>
+                            
                         </div>
                     </div></>
                     }
@@ -137,7 +141,7 @@ export default function Subscribe_to_newsletter({ children, pageTitle, descripti
                                     <div className="media-content">
                                         <div className="content">
                                             <p>
-                                                <strong>Bill Krell</strong> <small>bill.krell@feenaught.com</small>
+                                                <strong>Bill Krell</strong> <small>bill.krell@feenaughty.com</small>
                                                 <br/>
                                                     Outside sales New / Used / Rentals. 15+ years in the industry. Machine Operator, and enthusist.
                                                     <br/>Vancouver, Washington, United States.
