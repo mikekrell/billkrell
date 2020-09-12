@@ -1,3 +1,4 @@
+
 html,
 body {
   padding: 0;
@@ -14,3 +15,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.bg-img { 
+        background-image: url(doosan_bg_img.jpg) ;
+        background-position: center center;
+        background-repeat:  no-repeat;
+        background-size:  cover;
+        background-color: #999;
+ }

@@ -1,0 +1,1201 @@
+{
+  "contentTypes": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "id": "equipment",
+        "type": "ContentType",
+        "createdAt": "2020-08-28T16:49:19.996Z",
+        "updatedAt": "2020-08-28T17:44:02.410Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 20,
+        "publishedAt": "2020-08-28T17:44:02.410Z",
+        "firstPublishedAt": "2020-08-28T16:49:45.656Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "publishedCounter": 10,
+        "version": 21,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        }
+      },
+      "displayField": "title",
+      "name": "Equipment",
+      "description": "Equipment List",
+      "fields": [
+        {
+          "id": "brand",
+          "name": "Brand",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "in": [
+                "Doosan",
+                "John Deere",
+                "Kobelco",
+                "Takeuchi"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "title",
+          "name": "Title",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "price",
+          "name": "Price",
+          "type": "Number",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "hours",
+          "name": "Hours",
+          "type": "Integer",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "media",
+          "name": "Media",
+          "type": "Array",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false,
+          "items": {
+            "type": "Link",
+            "validations": [
+            ],
+            "linkType": "Asset"
+          }
+        },
+        {
+          "id": "weight",
+          "name": "Weight",
+          "type": "Integer",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "description",
+          "name": "Description",
+          "type": "RichText",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "location",
+          "name": "Location",
+          "type": "Location",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "type",
+          "name": "Type",
+          "type": "Symbol",
+          "localized": false,
+          "required": false,
+          "validations": [
+            {
+              "in": [
+                "Excavator",
+                "Dozer",
+                "Loader",
+                "Mini",
+                "Track Loader",
+                "Accessory",
+                "Roller"
+              ]
+            }
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "available",
+          "name": "Available",
+          "type": "Boolean",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "markAsSold",
+          "name": "Mark as Sold",
+          "type": "Boolean",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "weeklyRate",
+          "name": "Weekly Rate",
+          "type": "Number",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "monthlyRate",
+          "name": "Monthly Rate",
+          "type": "Number",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        },
+        {
+          "id": "estFinancePayment",
+          "name": "Estimated Finance Payment",
+          "type": "Number",
+          "localized": false,
+          "required": false,
+          "validations": [
+          ],
+          "disabled": false,
+          "omitted": false
+        }
+      ]
+    }
+  ],
+  "tags": [
+  ],
+  "editorInterfaces": [
+    {
+      "sys": {
+        "id": "default",
+        "type": "EditorInterface",
+        "space": {
+          "sys": {
+            "id": "ayaqw4ri6qlp",
+            "type": "Link",
+            "linkType": "Space"
+          }
+        },
+        "version": 20,
+        "createdAt": "2020-08-28T16:49:45.755Z",
+        "createdBy": {
+          "sys": {
+            "id": "1ws4AHxPMJ538miFZh7S1G",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "updatedAt": "2020-08-28T17:44:03.606Z",
+        "updatedBy": {
+          "sys": {
+            "id": "1ws4AHxPMJ538miFZh7S1G",
+            "type": "Link",
+            "linkType": "User"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "id": "equipment",
+            "type": "Link",
+            "linkType": "ContentType"
+          }
+        },
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        }
+      },
+      "controls": [
+        {
+          "fieldId": "brand",
+          "widgetId": "dropdown",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "title",
+          "widgetId": "singleLine",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "price",
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "hours",
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "media",
+          "widgetId": "assetLinksEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "weight",
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "description",
+          "widgetId": "richTextEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "location",
+          "widgetId": "locationEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "type",
+          "widgetId": "dropdown",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "available",
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "markAsSold",
+          "widgetId": "boolean",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "weeklyRate",
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "monthlyRate",
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        },
+        {
+          "fieldId": "estFinancePayment",
+          "widgetId": "numberEditor",
+          "widgetNamespace": "builtin"
+        }
+      ]
+    }
+  ],
+  "entries": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "id": "8WHAT3RrxHcDugcB9emIj",
+        "type": "Entry",
+        "createdAt": "2020-08-28T16:49:52.731Z",
+        "updatedAt": "2020-08-28T21:19:12.971Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 18,
+        "publishedAt": "2020-08-28T21:19:12.971Z",
+        "firstPublishedAt": "2020-08-28T16:52:46.880Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "publishedCounter": 4,
+        "version": 19,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "equipment"
+          }
+        }
+      },
+      "fields": {
+        "brand": {
+          "en-US": "John Deere"
+        },
+        "title": {
+          "en-US": "850K WLT"
+        },
+        "price": {
+          "en-US": 192000
+        },
+        "media": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Asset",
+                "id": "5F8R8xNpMPOkgi3WEXMo5F"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Asset",
+                "id": "7iFq1y24JOa2VTba3G7PVL"
+              }
+            }
+          ]
+        },
+        "weight": {
+          "en-US": 92450
+        },
+        "location": {
+          "en-US": {
+            "lon": -123.086,
+            "lat": 44.05206
+          }
+        },
+        "type": {
+          "en-US": "Dozer"
+        },
+        "available": {
+          "en-US": true
+        },
+        "markAsSold": {
+          "en-US": false
+        },
+        "weeklyRate": {
+          "en-US": 1950
+        },
+        "monthlyRate": {
+          "en-US": 8500
+        },
+        "estFinancePayment": {
+          "en-US": 3654
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "id": "2BADhkGLr3rr5Z4qvEq9q7",
+        "type": "Entry",
+        "createdAt": "2020-08-28T17:40:17.905Z",
+        "updatedAt": "2020-08-28T21:18:47.581Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 10,
+        "publishedAt": "2020-08-28T21:18:47.581Z",
+        "firstPublishedAt": "2020-08-28T17:41:41.190Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "publishedCounter": 2,
+        "version": 11,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "equipment"
+          }
+        }
+      },
+      "fields": {
+        "brand": {
+          "en-US": "Doosan"
+        },
+        "title": {
+          "en-US": "DX225 "
+        },
+        "price": {
+          "en-US": 102500
+        },
+        "hours": {
+          "en-US": 2250
+        },
+        "media": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Asset",
+                "id": "5X0TPCCkJYo9VTqL5mE6wg"
+              }
+            }
+          ]
+        },
+        "weight": {
+          "en-US": 56000
+        },
+        "location": {
+          "en-US": {
+            "lon": -122.675,
+            "lat": 45.5051
+          }
+        },
+        "type": {
+          "en-US": "Excavator"
+        },
+        "available": {
+          "en-US": true
+        },
+        "markAsSold": {
+          "en-US": false
+        },
+        "weeklyRate": {
+          "en-US": 2850
+        },
+        "monthlyRate": {
+          "en-US": 8500
+        },
+        "estFinancePayment": {
+          "en-US": 1847
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "id": "uOvZcSjiz2f2kKsdwFQoc",
+        "type": "Entry",
+        "createdAt": "2020-08-29T05:40:43.661Z",
+        "updatedAt": "2020-08-29T05:41:11.002Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2020-08-29T05:41:11.002Z",
+        "firstPublishedAt": "2020-08-29T05:41:11.002Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "equipment"
+          }
+        }
+      },
+      "fields": {
+        "brand": {
+          "en-US": "John Deere"
+        },
+        "title": {
+          "en-US": "850K WLT (1)"
+        },
+        "price": {
+          "en-US": 192000
+        },
+        "media": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Asset",
+                "id": "5F8R8xNpMPOkgi3WEXMo5F"
+              }
+            },
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Asset",
+                "id": "7iFq1y24JOa2VTba3G7PVL"
+              }
+            }
+          ]
+        },
+        "weight": {
+          "en-US": 92450
+        },
+        "location": {
+          "en-US": {
+            "lon": -123.086,
+            "lat": 44.05206
+          }
+        },
+        "type": {
+          "en-US": "Dozer"
+        },
+        "available": {
+          "en-US": true
+        },
+        "markAsSold": {
+          "en-US": false
+        },
+        "weeklyRate": {
+          "en-US": 1950
+        },
+        "monthlyRate": {
+          "en-US": 8500
+        },
+        "estFinancePayment": {
+          "en-US": 3654
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "id": "OhEQCt2ViqzwCFEqUuQNQ",
+        "type": "Entry",
+        "createdAt": "2020-08-29T05:40:49.981Z",
+        "updatedAt": "2020-08-29T05:41:11.006Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 1,
+        "publishedAt": "2020-08-29T05:41:11.006Z",
+        "firstPublishedAt": "2020-08-29T05:41:11.006Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 2,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "contentType": {
+          "sys": {
+            "type": "Link",
+            "linkType": "ContentType",
+            "id": "equipment"
+          }
+        }
+      },
+      "fields": {
+        "brand": {
+          "en-US": "Doosan"
+        },
+        "title": {
+          "en-US": "DX225 (1)"
+        },
+        "price": {
+          "en-US": 102500
+        },
+        "hours": {
+          "en-US": 2250
+        },
+        "media": {
+          "en-US": [
+            {
+              "sys": {
+                "type": "Link",
+                "linkType": "Asset",
+                "id": "5X0TPCCkJYo9VTqL5mE6wg"
+              }
+            }
+          ]
+        },
+        "weight": {
+          "en-US": 56000
+        },
+        "location": {
+          "en-US": {
+            "lon": -122.675,
+            "lat": 45.5051
+          }
+        },
+        "type": {
+          "en-US": "Excavator"
+        },
+        "available": {
+          "en-US": true
+        },
+        "markAsSold": {
+          "en-US": false
+        },
+        "weeklyRate": {
+          "en-US": 2850
+        },
+        "monthlyRate": {
+          "en-US": 8500
+        },
+        "estFinancePayment": {
+          "en-US": 1847
+        }
+      }
+    }
+  ],
+  "assets": [
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "id": "1SZR8aFrS4fZHcg3YLKdOv",
+        "type": "Asset",
+        "createdAt": "2020-08-28T16:32:38.170Z",
+        "updatedAt": "2020-08-28T16:33:26.109Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 6,
+        "publishedAt": "2020-08-28T16:33:26.109Z",
+        "firstPublishedAt": "2020-08-28T16:33:26.109Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 7,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "USED 2017 Dozer "
+        },
+        "description": {
+          "en-US": "Hours, "
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/ayaqw4ri6qlp/1SZR8aFrS4fZHcg3YLKdOv/c1f4eaf68deeabfc59456621ef09dfab/38370945_huge_31032.jpg",
+            "details": {
+              "size": 133303,
+              "image": {
+                "width": 2048,
+                "height": 1536
+              }
+            },
+            "fileName": "38370945_huge_31032.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "id": "5F8R8xNpMPOkgi3WEXMo5F",
+        "type": "Asset",
+        "createdAt": "2020-08-28T16:39:41.577Z",
+        "updatedAt": "2020-08-28T16:52:18.105Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 2,
+        "publishedAt": "2020-08-28T16:52:18.105Z",
+        "firstPublishedAt": "2020-08-28T16:52:18.105Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 3,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "38370954 huge 38185"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/ayaqw4ri6qlp/5F8R8xNpMPOkgi3WEXMo5F/bfa2d20cea9670b58853fb49fbb4195a/38370954_huge_38185.jpg",
+            "details": {
+              "size": 131570,
+              "image": {
+                "width": 2048,
+                "height": 1536
+              }
+            },
+            "fileName": "38370954_huge_38185.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "id": "7iFq1y24JOa2VTba3G7PVL",
+        "type": "Asset",
+        "createdAt": "2020-08-28T16:39:41.584Z",
+        "updatedAt": "2020-08-28T16:52:32.728Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 2,
+        "publishedAt": "2020-08-28T16:52:32.728Z",
+        "firstPublishedAt": "2020-08-28T16:52:32.728Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 3,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "38370951 huge 20856"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/ayaqw4ri6qlp/7iFq1y24JOa2VTba3G7PVL/c5224c1305e0d36246e064df72a094db/38370951_huge_20856.jpg",
+            "details": {
+              "size": 167991,
+              "image": {
+                "width": 2048,
+                "height": 1536
+              }
+            },
+            "fileName": "38370951_huge_20856.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    },
+    {
+      "sys": {
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "id": "5X0TPCCkJYo9VTqL5mE6wg",
+        "type": "Asset",
+        "createdAt": "2020-08-28T17:41:47.276Z",
+        "updatedAt": "2020-08-28T17:43:22.307Z",
+        "environment": {
+          "sys": {
+            "id": "master",
+            "type": "Link",
+            "linkType": "Environment"
+          }
+        },
+        "publishedVersion": 5,
+        "publishedAt": "2020-08-28T17:43:22.307Z",
+        "firstPublishedAt": "2020-08-28T17:43:22.307Z",
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "publishedCounter": 1,
+        "version": 6,
+        "publishedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        }
+      },
+      "fields": {
+        "title": {
+          "en-US": "Doosan Excavator"
+        },
+        "description": {
+          "en-US": "Excavator"
+        },
+        "file": {
+          "en-US": {
+            "url": "//images.ctfassets.net/ayaqw4ri6qlp/5X0TPCCkJYo9VTqL5mE6wg/ec2d8b6a79f8753690ce3fe186a33594/Case.jpg",
+            "details": {
+              "size": 43347,
+              "image": {
+                "width": 392,
+                "height": 294
+              }
+            },
+            "fileName": "Case.jpg",
+            "contentType": "image/jpeg"
+          }
+        }
+      }
+    }
+  ],
+  "locales": [
+    {
+      "name": "English (United States)",
+      "code": "en-US",
+      "fallbackCode": null,
+      "default": true,
+      "contentManagementApi": true,
+      "contentDeliveryApi": true,
+      "optional": false,
+      "sys": {
+        "type": "Locale",
+        "id": "2k4Td5Ud5DJ1wjb1vaNpPK",
+        "version": 1,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "environment": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Environment",
+            "id": "master"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "createdAt": "2020-08-28T16:27:32Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedAt": "2020-08-28T16:27:32Z"
+      }
+    }
+  ],
+  "webhooks": [
+  ],
+  "roles": [
+    {
+      "name": "Editor",
+      "description": "Allows editing, publishing and archiving of content",
+      "policies": [
+        {
+          "effect": "allow",
+          "actions": "all",
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Entry"
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "effect": "allow",
+          "actions": "all",
+          "constraint": {
+            "and": [
+              {
+                "equals": [
+                  {
+                    "doc": "sys.type"
+                  },
+                  "Asset"
+                ]
+              }
+            ]
+          }
+        }
+      ],
+      "permissions": {
+        "ContentModel": [
+          "read"
+        ],
+        "Settings": [
+        ],
+        "ContentDelivery": [
+        ],
+        "Environments": [
+        ],
+        "EnvironmentAliases": [
+        ],
+        "Tags": [
+        ]
+      },
+      "sys": {
+        "type": "Role",
+        "id": "2k5ELG8dYEUkg3OvzMDAK8",
+        "version": 0,
+        "space": {
+          "sys": {
+            "type": "Link",
+            "linkType": "Space",
+            "id": "ayaqw4ri6qlp"
+          }
+        },
+        "createdBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "createdAt": "2020-08-28T16:27:32Z",
+        "updatedBy": {
+          "sys": {
+            "type": "Link",
+            "linkType": "User",
+            "id": "1ws4AHxPMJ538miFZh7S1G"
+          }
+        },
+        "updatedAt": "2020-08-28T16:27:32Z"
+      }
+    }
+  ]
+}

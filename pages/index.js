@@ -1,65 +1,64 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import Link from 'next/link'
+import useRouter from 'next/router'
+import useSwr from 'swr'
+import Modal from '../components/Modal'
+import React, { useState } from 'react';
+
+Home.getInitialProps = ctx => {
+  // We check for ctx.res to make sure we're on the server.
+  if (ctx.res) {
+    ctx.res.writeHead(302, { Location: '/used' });
+    ctx.res.end();
+  }
+  return {};
+}
 
 export default function Home() {
+
+  const [ modal, setOpenModal ] = useState(false);
+  const openModal = () => setOpenModal(true)
+  const closeModal = () => setOpenModal(false)
+
   return (
-    <div className={styles.container}>
+    <>
+    <script src="https://kit.fontawesome.com/4fedb228b0.js" crossOrigin="anonymous"></script>
       <Head>
-        <title>Create Next App</title>
+        <title>Bill Krell - Feenaughty</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <main className={styles.main}>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
-
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+      <Modal isOpen={modal} closeModal={closeModal}></Modal>
+      <section className="hero mt-2 has-background-light">
+        <div className="hero-body">
+          <div className="container">
+            <div className="columns">
+              <div className="column pl-2">
+                <img src="pngkit_machinery-png_3405560.png"></img>
+              </div>
+              <div className="column pr-4">
+                <h1 className="title mt-6">
+                  Let me help find what you are looking for!
+                </h1>
+                <h2 className="subtitle mt-2">
+                  All you need to do is let me know.
+                </h2>
+                <p>
+                  You can view our used inventory, or contact me directy to talk about getting you into a NEW machine. Its easier than you might think, lots of ways to help. Clicking "Contact Me" will call my phone directy, available whenever you need me.
+                </p>
+                <p className="buttons mt-6 is-pulled-right mr-5">
+                  <Link as="/used" href="/used">
+                    <button className="button is-md">
+                      View Used Inventory</button>
+                  </Link>
+                  <button className="button is-md has-background-warning" onClick={openModal}>
+                    Contact Me
+                  </button>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-      </main>
-
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel Logo" className={styles.logo} />
-        </a>
-      </footer>
-    </div>
+      </section>
+    </>
   )
 }
