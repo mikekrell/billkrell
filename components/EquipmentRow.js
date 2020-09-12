@@ -1,5 +1,5 @@
 
-function EquipmentRow( { equip }){
+function EquipmentRow({ equip, showColumns }){
     const getImageUrl = (media) => `${media.fields.file.url}?w=96&fm=png`
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -8,9 +8,10 @@ function EquipmentRow( { equip }){
     })
     return (
         <tr>
+            {!showColumns ? null :
             <td>
                 {equip.fields.media !== undefined ? <img src={getImageUrl(equip.fields.media[0])} className="image" width="96" height="auto" alt={equip.fields.title}></img> : null}
-            </td>
+            </td>}
             <td>
                 {equip.fields.year}
             </td>
@@ -20,15 +21,18 @@ function EquipmentRow( { equip }){
             <td width="20%">
                 {equip.fields.title}
             </td>
-            <td>
-                {equip.fields.type}
-            </td>
-            <td>
-                {equip.fields.hours}
-            </td>
-            <td>
-                {equip.fields.weight == 0 ? '' : `${ equip.fields.weight }lbs` }
-            </td>
+            {!showColumns ? null :
+            <>
+                <td>
+                    {equip.fields.type}
+                </td>
+                <td>
+                    {equip.fields.hours}
+                </td>
+                <td>
+                    {equip.fields.weight == 0 ? '' : `${equip.fields.weight}lb`}
+                </td>
+            </>}
             <td>
                 {formatter.format(equip.fields.weeklyRate)}
             </td>

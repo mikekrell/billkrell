@@ -1,10 +1,24 @@
 import {useState, useEffect} from 'react'
 import Head from 'next/head'
 import EquipmentRow from '../components/EquipmentRow'
+import useWindowSize from '../hooks/use-window-size';
 var contentful = require('contentful');
 
-function Used( {posts, equip} ){ 
 
+function Used( {posts, equip} ){ 
+    const size = useWindowSize();
+    const [windowSize, setWindowSize] = useState({height:0, width:0})
+
+    useEffect(() => { 
+        if (size) {
+            setWindowSize({ height: size.height, width: size.width})
+        }
+
+        console.log(windowSize.height,windowSize.width)
+    }, [size])
+
+    const showColumns = windowSize.width >= 400
+    
     return (
                     <>
                 <Head>
@@ -28,27 +42,40 @@ function Used( {posts, equip} ){
                 </section>
                 <section className="section">
                     <div className="container">
-                    <table className="table is-striped is-hoverable is-scrollable">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Year</th>
-                                <th>Manufacture</th>
-                                <th>Model</th>
-                                <th>Type</th>
-                                <th>Hours</th>
-                                <th>Weight(lbs)</th>
-                                <th>Weekly Rental</th>
-                                <th>Monthly Rental</th>
-                                <th>Price</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {equip.map((equip, i) => (
-                                <EquipmentRow key={i} equip={equip}></EquipmentRow>
-                            ))}
-                        </tbody>
-                    </table>
+                        <div className="table-container">
+                        <table className={showColumns ? "table is-striped is-hoverable is-scrollable" : "table is-striped is-hoverable is-scrollable is-narrow is-bordered" }>
+                                <thead>
+                                {showColumns ?
+                                    <tr>
+                                        <th></th>
+                                        <th>Year</th>
+                                        <th>Manufacture</th>
+                                        <th>Model</th>
+                                        <th>Type</th>
+                                        <th>Hours</th>
+                                        <th>Weight(lb)</th>
+                                        <th>Weekly Rental</th>
+                                        <th>Monthly Rental</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    : 
+                                    <tr>
+                                        <th>Year</th>
+                                        <th>Manufacture</th>
+                                        <th>Model</th>
+                                        <th>Weekly Rental</th>
+                                        <th>Monthly Rental</th>
+                                        <th>Price</th>
+                                    </tr>
+                                    }
+                                </thead>
+                                <tbody>
+                                    {equip.map((equip, i) => (
+                                        <EquipmentRow showColumns={showColumns} key={i} equip={equip}></EquipmentRow>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </section>
             </>
