@@ -1,6 +1,6 @@
 
 function EquipmentRow( { equip }){
-    const getImageUrl = (media) => media.fields.file.url
+    const getImageUrl = (media) => `${media.fields.file.url}?w=96&fm=png`
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
         currency: 'USD',
