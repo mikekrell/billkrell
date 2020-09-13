@@ -23,3 +23,31 @@ a {
         background-size:  cover;
         background-color: #999;
  }
+
+ .card-image:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(to bottom, transparent 0%,transparent 70%, black 100%);
+}
+
+ .card:hover {
+  padding: 2px;
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+ }
+
+.image-title {
+  position: absolute;
+  bottom: 0;
+  margin-bottom:10%;
+  padding-left:10px;
+  line-height: 1.1;
+}
+.image-manufacture-title {
+  margin-bottom: 5px;
+}
