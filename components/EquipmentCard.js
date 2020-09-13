@@ -7,26 +7,23 @@ function EquipmentCard( { equip }){
         minimumFractionDigits: 2
     })
     return (
-        <div className="card">
-            <header className="card-header has-background-warning">
-                <p className="card-header-title">
-                    {equip.fields.title}
-                                    </p>
-                <div className="card-header-icon">
-                    <span className="tag is-light ml-5">{equip.fields.type}</span>
-                </div>
-            </header>
-            <div className="card-content">
-                <div className="content">
-                    
+            <div class="column is-one-quarter-desktop is-half-tablet">
+                <div class="card">
+                    <div class="card-image">
+                        <figure class="image">
+                        {equip.fields.media !== undefined ? <img src={getImageUrl(equip.fields.media[0])} className="image" width="200" height="auto" alt={equip.fields.title}></img> : null}
+                        </figure>
+                        <div class="card-content is-overlay is-clipped">
+                            <span class="tag">
+                                {equip.fields.title}
+                            </span>
+                        <span className={equip.fields.price == 0 ? 'tag is-pulled-right has-background-warning' : 'tag is-pulled-right has-background-success has-text-white-ter' }>
+                            {equip.fields.price == 0 ? `Call for Quote` : formatter.format(equip.fields.price) }
+                        </span>
+                        </div>
+                    </div>
                 </div>
             </div>
-            <div className="card-footer has-background-light">
-                <div className="card-footer-item"><p><strong>Hours:</strong> {equip.fields.hours}</p></div>
-                <div className="card-footer-item"><p><strong>Weight(lbs): </strong> {equip.fields.weight}</p></div>
-                <div className="card-footer-item has-background-success"><p><strong>{formatter.format(equip.fields.price)}</strong></p></div>
-            </div>
-        </div>
     )
 }
 

@@ -1,13 +1,17 @@
-import {useState, useEffect} from 'react'
+import { useState, useEffect, ReactElement} from 'react'
 import Head from 'next/head'
 import EquipmentRow from '../components/EquipmentRow'
+import EquipmentCard from '../components/EquipmentCard'
 import useWindowSize from '../hooks/use-window-size';
+import { faTh, faBars } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 var contentful = require('contentful');
 
 
 function Used( {posts, equip} ){ 
     const size = useWindowSize();
     const [windowSize, setWindowSize] = useState({height:0, width:0})
+    const [gridView, setGridView] = useState(true)
 
     useEffect(() => { 
         if (size) {
@@ -40,33 +44,54 @@ function Used( {posts, equip} ){
                     </h2>
                     </div>
                 </section>
+                <div className="container pt-5">
+                    <p class="buttons">
+                        <button class="button is-small" onClick={()=>setGridView(true)}>
+                            <span class="icon is-small">
+                            <FontAwesomeIcon icon={faTh} />
+                            </span>
+                        </button>
+                        <button className="button is-small">
+                            <span className="icon is-small">
+                            <FontAwesomeIcon icon={faBars} onClick={() => setGridView(false)} />
+                            </span>
+                        </button>
+                    </p>
+                </div>
                 <section className="section">
                     <div className="container">
                         <div className="table-container">
-                        <table className={showColumns ? "table is-striped is-hoverable is-scrollable" : "table is-striped is-hoverable is-scrollable is-narrow is-bordered" }>
+                        {gridView ? 
+                            <div className="columns is-multiline">
+                                {equip.map((equip, i) => (
+                                    <EquipmentCard key={i} equip={equip}></EquipmentCard>
+                                ))}
+                            </div>
+                            :
+                            <table className={showColumns ? "table is-striped is-hoverable is-scrollable" : "table is-striped is-hoverable is-scrollable is-narrow is-bordered"}>
                                 <thead>
-                                {showColumns ?
-                                    <tr>
-                                        <th></th>
-                                        <th>Year</th>
-                                        <th>Manufacture</th>
-                                        <th>Model</th>
-                                        <th>Type</th>
-                                        <th>Hours</th>
-                                        <th>Weight(lb)</th>
-                                        <th>Weekly Rental</th>
-                                        <th>Monthly Rental</th>
-                                        <th>Price</th>
-                                    </tr>
-                                    : 
-                                    <tr>
-                                        <th>Year</th>
-                                        <th>Manufacture</th>
-                                        <th>Model</th>
-                                        <th>Weekly Rental</th>
-                                        <th>Monthly Rental</th>
-                                        <th>Price</th>
-                                    </tr>
+                                    {showColumns ?
+                                        <tr>
+                                            <th></th>
+                                            <th>Year</th>
+                                            <th>Manufacture</th>
+                                            <th>Model</th>
+                                            <th>Type</th>
+                                            <th>Hours</th>
+                                            <th>Weight(lb)</th>
+                                            <th>Weekly Rental</th>
+                                            <th>Monthly Rental</th>
+                                            <th>Price</th>
+                                        </tr>
+                                        :
+                                        <tr>
+                                            <th>Year</th>
+                                            <th>Manufacture</th>
+                                            <th>Model</th>
+                                            <th>Weekly Rental</th>
+                                            <th>Monthly Rental</th>
+                                            <th>Price</th>
+                                        </tr>
                                     }
                                 </thead>
                                 <tbody>
@@ -75,6 +100,7 @@ function Used( {posts, equip} ){
                                     ))}
                                 </tbody>
                             </table>
+                        }
                         </div>
                     </div>
                 </section>
