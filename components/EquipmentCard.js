@@ -20,7 +20,7 @@ function EquipmentCard( { equip }){
                         <span className={equip.fields.price == 0 ? 'tag is-pulled-right has-background-warning is-medium' : 'tag is-pulled-right is-medium has-background-success has-text-white-ter' }>
                                 {equip.fields.price == 0 ? `Call for Quote` : formatter.format(equip.fields.price) }
                             </span>
-                            <span class="tags has-addons" style={{ "opacity": "0.5"}}>
+                            <span class="tags has-addons" style={{ "opacity": "0.8"}}>
                                 <span class="tag" style={{ "opacity": "1" }}>{equip.fields.media !== undefined  && equip.fields.media.length > 0 ? equip.fields.media.length : '0'}</span>
                                 <span class="tag" style={{ "opacity": "1" }}><FontAwesomeIcon className="icon is-small" icon={faImage} /></span>
                             </span>
