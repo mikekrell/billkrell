@@ -2,13 +2,14 @@ import {useState} from 'react'
 import { faImage, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import GoogleMapReact from 'google-map-react';
+import AwesomeSlider from 'react-awesome-slider';
 
 function EquipmentCard( { equip }){
     const [showContent, setShowContent] = useState(false)
     const getImageUrl = (media) => media.fields.file.url
     const formatter = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
+        // style: 'currency',
+        // currency: 'USD',
         minimumFractionDigits: 2
     })
 
@@ -21,12 +22,17 @@ function EquipmentCard( { equip }){
                 <div className="card p-3">
                 <div className={!showContent ? "card-image" : "card-image card-image-active"}>
                         <figure className="image">
-                        {equip.fields.media !== undefined ? <img src={getImageUrl(equip.fields.media[0])} className="image" width="200" height="auto" alt={equip.fields.title}></img> : <img src="nopreview.jpg" className="image" width="200" height="auto" alt={equip.fields.title}></img>}
+                            {equip.fields.media !== undefined ? <img src={getImageUrl(equip.fields.media[0])} className="image" width="200" height="auto" alt={equip.fields.title}></img> : <img src="nopreview.jpg" className="image" width="200" height="auto" alt={equip.fields.title}></img>}
                         </figure>
                         <div className="card-content is-overlay is-clipped">
-                            <span className={equip.fields.price == 0 ? 'tag is-pulled-right has-background-warning is-medium' : 'tag is-pulled-right is-medium has-background-success has-text-white-ter' }>
-                                {equip.fields.price == 0 ? `Call for Quote` : formatter.format(equip.fields.price) }
-                            </span>
+                        <span className="tags has-addons is-pulled-right">
+                                 {equip.fields.price == 0 ?
+                                null : <span className='tag  is-medium has-addon has-background-success has-text-white'>$</span>
+                                }
+                                <span className={equip.fields.price == 0 ? 'tag is-medium is-warning' : 'tag is-medium'}>
+                                    {equip.fields.price == 0 ? `Call for Quote` : formatter.format(equip.fields.price)}
+                                </span>
+                        </span>
                         <span className="tags has-addons is-pulled-left" style={{ "opacity": "0.8", "marginRight": "10px"}}>
                                 <span className="tag" style={{ "opacity": "1" }}>{equip.fields.media !== undefined  && equip.fields.media.length > 0 ? equip.fields.media.length : '0'}</span>
                                 <span className="tag" style={{ "opacity": "1" }}><FontAwesomeIcon className="icon is-small" icon={faImage} /></span>
@@ -58,6 +64,7 @@ function EquipmentCard( { equip }){
                                     <td>{formatter.format(equip.fields.monthlyRate)}</td>
                                 </tr>
                             </table>
+                            <p className="is-size-6 has-text-white ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         </div>
                     }
                     </span>
