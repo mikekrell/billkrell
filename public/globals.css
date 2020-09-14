@@ -81,3 +81,24 @@ a {
    padding: 0; 
    height : 75%;
 }
+
+.table-trans {
+  background-color:rgba(0, 0, 0, 0) !important;
+}
+
+.excavator {
+  background: hsl(141, 71%, 48%) !important;
+}
+
+.roller {
+  background : hsl(48, 100%, 67%) !important;
+}
+
+.dozer {
+  background : hsl(204, 86%, 53%) !important; 
+}
+
+.map {
+  width: 100%;
+  height: 0px;
+}
