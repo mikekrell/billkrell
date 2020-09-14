@@ -36,10 +36,11 @@ function EquipmentCard( { equip }){
                     <span className="image-title">
                         <p className="is-size-5 has-text-white image-manufacture-title"><span className="has-text-weight-bold">{equip.fields.year}</span> {equip.fields.manufacture}</p>
                         <h1 className="is-size-2 has-text-white has-text-weight-bold">{equip.fields.title}</h1>
+                    {!showContent ? null : 
                         <div className="column is-centered more-info-content-active">
-                        {showContent ?
-                            <p className="is-size-6 has-text-white ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> : null }
+                            null : <p className="is-size-6 has-text-white ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
                         </div>
+                    }
                     </span>
                     <span className="more-info">
                     <div className="column is-centered" style={{"margin":"0", "padding": "0"}}>
