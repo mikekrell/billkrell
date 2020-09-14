@@ -44,20 +44,6 @@ function Used( {posts, equip} ){
                     </h2>
                     </div>
                 </section>
-                <div className="container pt-5">
-                    <p class="buttons">
-                        <button class="button is-small" onClick={()=>setGridView(true)}>
-                            <span class="icon is-small">
-                            <FontAwesomeIcon icon={faTh} />
-                            </span>
-                        </button>
-                        <button className="button is-small">
-                            <span className="icon is-small">
-                            <FontAwesomeIcon icon={faBars} onClick={() => setGridView(false)} />
-                            </span>
-                        </button>
-                    </p>
-                </div>
                 <section className="section">
                     <div className="container">
                         <div className="table-container">

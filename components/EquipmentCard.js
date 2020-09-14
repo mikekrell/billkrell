@@ -1,5 +1,5 @@
 import {useState} from 'react'
-import { faImage, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
+import { faImage, faChevronDown, faChevronUp, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import GoogleMapReact from 'google-map-react';
 import AwesomeSlider from 'react-awesome-slider';
@@ -27,9 +27,9 @@ function EquipmentCard( { equip }){
                         <div className="card-content is-overlay is-clipped">
                         <span className="tags has-addons is-pulled-right">
                                  {equip.fields.price == 0 ?
-                                null : <span className='tag  is-medium has-addon has-background-success has-text-white'>$</span>
+                                <span className='tag  is-medium has-addon has-background-warning '><FontAwesomeIcon className="icon is-small" icon={faPhone}/></span> : <span className='tag  is-medium has-addon has-background-success has-text-white'>$</span>
                                 }
-                                <span className={equip.fields.price == 0 ? 'tag is-medium is-warning' : 'tag is-medium'}>
+                                <span className={equip.fields.price == 0 ? 'tag is-medium' : 'tag is-medium'}>
                                     {equip.fields.price == 0 ? `Call for Quote` : formatter.format(equip.fields.price)}
                                 </span>
                         </span>
@@ -64,7 +64,7 @@ function EquipmentCard( { equip }){
                                     <td>{formatter.format(equip.fields.monthlyRate)}</td>
                                 </tr>
                             </table>
-                            <p className="is-size-6 has-text-white ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+                    <p className="is-size-6 has-text-white ">{equip.fields.description}</p>
                         </div>
                     }
                     </span>
