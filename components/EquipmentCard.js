@@ -10,7 +10,7 @@ function EquipmentCard( { equip }){
     })
 
     return (
-            <div class="column is-one-quarter-desktop is-half-tablet">
+            <div class="column is-one-third-desktop is-half-tablet">
             <div class="card p-3">
                     <div class="card-image">
                         <figure class="image">
