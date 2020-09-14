@@ -31,11 +31,23 @@ a {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(to bottom, transparent 0%,transparent 70%, black 100%);
+  background: linear-gradient(to bottom, transparent 0%, transparent 70%, black 100%);
+}
+
+ .card-image-active:after {
+  background: linear-gradient(to bottom, transparent 0%, transparent 40%, black 100%);
+  transition-duration: .2s;
 }
 
  .card:hover {
   padding: 2px;
+  transition: 0.2s;
+  transition-timing-function: ease-out;
+  transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
+ }
+
+  .card:hover .more-info{
+  padding-bottom: 5px;
   transition: 0.2s;
   transition-timing-function: ease-out;
   transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
@@ -52,6 +64,22 @@ a {
   margin-bottom: 5px;
 }
 
-.tag:not(body) {
-  border-radius: 0px; 
+.more-info{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding:0
+}
+
+.more-info-icon{
+  margin-left: calc(50% - .5rem)
+}
+
+
+.more-info-content-active{
+   margin: 0; 
+   padding: 0; 
+   height : 75%;
+   overflow:hidden;
+   display: none;
 }

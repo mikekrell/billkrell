@@ -1,7 +1,10 @@
-import { faImage } from '@fortawesome/free-solid-svg-icons'
+import {useState} from 'react'
+import { faImage, faChevronDown, faChevronUp } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+
 function EquipmentCard( { equip }){
+    const [showContent, setShowContent] = useState(false)
     const getImageUrl = (media) => media.fields.file.url
     const formatter = new Intl.NumberFormat('en-US', {
         style: 'currency',
@@ -9,29 +12,44 @@ function EquipmentCard( { equip }){
         minimumFractionDigits: 2
     })
 
+    const toggleCardContent = () => {
+        setShowContent(!showContent)
+    }
+
     return (
-            <div class="column is-one-third-desktop is-half-tablet">
-            <div class="card p-3">
-                    <div class="card-image">
-                        <figure class="image">
+            <div className="column is-one-third-desktop is-half-tablet" onClick={toggleCardContent}>
+                <div className="card p-3">
+                <div className={!showContent ? "card-image" : "card-image card-image-active"}>
+                        <figure className="image">
                         {equip.fields.media !== undefined ? <img src={getImageUrl(equip.fields.media[0])} className="image" width="200" height="auto" alt={equip.fields.title}></img> : <img src="nopreview.jpg" className="image" width="200" height="auto" alt={equip.fields.title}></img>}
                         </figure>
-                        <div class="card-content is-overlay is-clipped">
+                        <div className="card-content is-overlay is-clipped">
                         <span className={equip.fields.price == 0 ? 'tag is-pulled-right has-background-warning is-medium' : 'tag is-pulled-right is-medium has-background-success has-text-white-ter' }>
                                 {equip.fields.price == 0 ? `Call for Quote` : formatter.format(equip.fields.price) }
                             </span>
-                            <span class="tags has-addons" style={{ "opacity": "0.8"}}>
-                                <span class="tag" style={{ "opacity": "1" }}>{equip.fields.media !== undefined  && equip.fields.media.length > 0 ? equip.fields.media.length : '0'}</span>
-                                <span class="tag" style={{ "opacity": "1" }}><FontAwesomeIcon className="icon is-small" icon={faImage} /></span>
+                            <span className="tags has-addons" style={{ "opacity": "0.8"}}>
+                                <span className="tag" style={{ "opacity": "1" }}>{equip.fields.media !== undefined  && equip.fields.media.length > 0 ? equip.fields.media.length : '0'}</span>
+                                <span className="tag" style={{ "opacity": "1" }}><FontAwesomeIcon className="icon is-small" icon={faImage} /></span>
                             </span>
                         </div>
                     </div>
                     <span className="image-title">
-                    <p className="is-size-5 has-text-white image-manufacture-title"><span className="has-text-weight-bold">{equip.fields.year}</span> {equip.fields.manufacture}</p>
+                        <p className="is-size-5 has-text-white image-manufacture-title"><span className="has-text-weight-bold">{equip.fields.year}</span> {equip.fields.manufacture}</p>
                         <h1 className="is-size-2 has-text-white has-text-weight-bold">{equip.fields.title}</h1>
+                        <div className="column is-centered more-info-content-active">
+                        {showContent ?
+                            <p className="is-size-6 has-text-white ">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p> : null }
+                        </div>
                     </span>
                     <span className="more-info">
-                        <p></p>
+                    <div className="column is-centered" style={{"margin":"0", "padding": "0"}}>
+                        <div className="container is-fluid">
+                            { !showContent ? <p className="is-size-7 has-text-centered has-text-white">MORE INFO</p> : null }
+                            <span className="more-info-icon">
+                                <FontAwesomeIcon className="icon is-small has-text-white" icon={showContent ? faChevronDown : faChevronUp } />
+                            </span>
+                            </div>
+                    </div>
                     </span>
                 </div>
             </div>
