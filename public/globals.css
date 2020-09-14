@@ -17,11 +17,11 @@ a {
 }
 
 .bg-img { 
-        background-image: url(doosan_bg_img.jpg) ;
-        background-position: center center;
-        background-repeat:  no-repeat;
-        background-size:  cover;
-        background-color: #999;
+  background-image: url(doosan_bg_img.jpg) ;
+  background-position: center center;
+  background-repeat:  no-repeat;
+  background-size:  cover;
+  background-color: #999;
  }
 
  .card-image:after {
@@ -44,10 +44,14 @@ a {
 .image-title {
   position: absolute;
   bottom: 0;
-  margin-bottom:10%;
+  margin-bottom:15%;
   padding-left:20px;
   line-height: 1.1;
 }
 .image-manufacture-title {
   margin-bottom: 5px;
+}
+
+.tag:not(body) {
+  border-radius: 0px; 
 }
