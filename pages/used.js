@@ -1,16 +1,14 @@
 import { useState, useEffect, ReactElement} from 'react'
 import Head from 'next/head'
-import EquipmentRow from '../components/EquipmentRow'
 import EquipmentCard from '../components/EquipmentCard'
 import useWindowSize from '../hooks/use-window-size';
-import { faTh, faBars } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 var contentful = require('contentful');
 
 
 function Used( {posts, equip} ){ 
     const size = useWindowSize();
     const [windowSize, setWindowSize] = useState({height:0, width:0})
+    const [swipeLeft, setSwipeLeft] = useState(false)
   
     useEffect(() => { 
         if (size) {
@@ -19,6 +17,7 @@ function Used( {posts, equip} ){
 
         console.log(windowSize.height,windowSize.width)
     }, [size])
+
 
     return (
             <>
@@ -47,7 +46,7 @@ function Used( {posts, equip} ){
                             <div className="columns is-multiline">
                                 {equip.map((equip, i) => (
                                     <div className="column is-one-third-desktop is-half-tablet" >
-                                        <EquipmentCard key={i} equip={equip}></EquipmentCard>
+                                        <EquipmentCard swipeLeft={swipeLeft} key={i} equip={equip}></EquipmentCard>
                                     </div>
                                 ))}
                             </div>

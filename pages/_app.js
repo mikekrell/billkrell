@@ -5,6 +5,7 @@ import "toastify-js/src/toastify.css"
 import 'bulma'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import 'pure-react-carousel/dist/react-carousel.es.css';
 import {useState} from 'react'
 
 

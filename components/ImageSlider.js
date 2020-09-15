@@ -1,19 +1,19 @@
 import Slider from 'react-slick';
 import {useEffect, useRef} from 'react'
-import { CompositionPage } from 'twilio/lib/rest/video/v1/composition';
 
-function ImageSlider({ media, slideshow }) {
+function ImageSlider({ media, slideshow, swipeLeft, slideIndex }) {
 
     const slideshowSettings = {
         dots: false,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        speed: 2500,
-        autoplaySpeed: 2225,
+        speed: 2000,
+        autoplaySpeed: 1750,
         cssEase: "ease-in",
         pauseOnHover: true,
-        fade: true
+        swipeToSlide: true,
+        
     } ;
 
     const sliderRef = useRef(null)
@@ -27,9 +27,23 @@ function ImageSlider({ media, slideshow }) {
             }else {
                 sliderRef.current.slickPause()
             }
-            
         }
     }, [slideshow])
+
+    useEffect(()=>{
+        if (swipeLeft) {
+            console.log('left', swipeLeft)
+            //sliderRef.current.slickNext();
+        }
+    }, [swipeLeft])
+
+    useEffect(()=>{
+        if (sliderRef.current) {
+            sliderRef.current.slickGoTo(slideIndex, true)
+        }
+
+    }, [slideIndex])
+
 
     return (
         <>
@@ -37,9 +51,9 @@ function ImageSlider({ media, slideshow }) {
             {media !== undefined ?
                     <Slider ref={sliderRef} autoplay={slideshow} {...slideshowSettings}>
                     {
-                        media.map((image) => (
+                        media.map((image, i) => (
                             <div>
-                                <img key="image.fields.file.url" src={image.fields.file.url} className="image" width="200" height="auto"></img>
+                                <img key={image.fields.file.url} src={image.fields.file.url} className="image" width="200" height="auto"></img>
                             </div>
                         ))
                     }

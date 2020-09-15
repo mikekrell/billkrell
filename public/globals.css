@@ -32,6 +32,7 @@ a {
   right: 0;
   bottom: 0;
   background: linear-gradient(to bottom, transparent 0%, transparent 70%, black 100%);
+  z-index: 0;
 }
 
  .card-image-active:after {
@@ -59,6 +60,7 @@ a {
   margin-bottom:15%;
   padding-left:20px;
   line-height: 1.1;
+  z-index: 3;
 }
 .image-manufacture-title {
   margin-bottom: 5px;
@@ -68,7 +70,8 @@ a {
   position: absolute;
   bottom: 0;
   width: 100%;
-  padding:0
+  padding:0;
+  z-index: 4
 }
 
 .more-info-icon{
@@ -105,4 +108,20 @@ a {
 
 .tags .tag {
   border-radius: 0px !important;
+}
+
+.card-content {
+  z-index: 3;
+}
+
+.thumbnail-container{
+  position: absolute;
+  z-index: 5;
+  top:0;
+  width: 80%;
+  height: auto;
+  background: rgba(0, 0, 0, .7);
+  margin-top: 20%;
+  margin-left: 10%;
+  border-radius: 4px;
 }
