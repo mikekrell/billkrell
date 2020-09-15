@@ -98,11 +98,11 @@ function EquipmentCard({ equip, swipeLeft }){
                 </div>
                 { showThumbs ? 
                     <div className="column is-fullwidth thumbnail-container">
-                        <div className="columns is-multiline">
+                        <div className="columns is-multiline is-mobile">
                             {
                             equip.fields.media.map( function (image, i){
                                 return (
-                                    <div className="column is-one-quarter-desktop is-one-quarter-mobile is-one-quarter-tablet p-5">
+                                    <div className="column is-one-quarter-desktop is-one-quarter-mobile is-one-quarter-tablet p-3">
                                         <img onClick={() => handleThumbnailChange(i)} key={image.fields.file.url} src={image.fields.file.url} className="image" width="64" height="64"></img>
                                     </div>
                                 )
