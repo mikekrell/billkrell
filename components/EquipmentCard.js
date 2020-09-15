@@ -102,7 +102,7 @@ function EquipmentCard({ equip, swipeLeft }){
                             {
                             equip.fields.media.map( function (image, i){
                                 return (
-                                    <div className="column is-one-quarter-desktop p-5">
+                                    <div className="column is-one-quarter-desktop is-one-quarter-mobile is-one-quarter-tablet p-5">
                                         <img onClick={() => handleThumbnailChange(i)} key={image.fields.file.url} src={image.fields.file.url} className="image" width="64" height="64"></img>
                                     </div>
                                 )
