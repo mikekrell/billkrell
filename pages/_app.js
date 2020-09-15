@@ -3,14 +3,17 @@ import Head from 'next/head'
 import '../public/globals.css'
 import "toastify-js/src/toastify.css"
 import 'bulma'
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import {useState} from 'react'
-import Subscribe from "../components/Subscribe"
+
 
 function MyApp({ Component, pageProps }) {
   const [menu, setMenu] = useState(false)
   const setHamburgerMenu = () => {
     setMenu(!menu)
   }
+
   return (
     <>
     <Head>

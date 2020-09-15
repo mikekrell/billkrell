@@ -1,12 +1,14 @@
-import {useState} from 'react'
+import {useState, useRef} from 'react'
 import { faImage, faChevronDown, faChevronUp, faPhone } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import GoogleMapReact from 'google-map-react';
 import AwesomeSlider from 'react-awesome-slider';
+import ImageSlider from './ImageSlider';
 
-function EquipmentCard( { equip }){
+function EquipmentCard({ equip }){
     const [showContent, setShowContent] = useState(false)
-    const getImageUrl = (media) => media.fields.file.url
+    const [slideshow, setSlideshow] = useState(false)
+
     const formatter = new Intl.NumberFormat('en-US', {
         // style: 'currency',
         // currency: 'USD',
@@ -14,15 +16,24 @@ function EquipmentCard( { equip }){
 
     const toggleCardContent = () => {
         setShowContent(!showContent)
+        //setSlideShow(!slideShow)
+    }
+
+    const onMouseEnterEvent = (event) => {
+        setSlideshow(true)
+        //console.log('in')
+    }
+
+    const onMouseOutEvent = () => {
+        setSlideshow(false)
+        //console.log('out')
     }
 
     return (
-            <div className="column is-one-third-desktop is-half-tablet" onClick={toggleCardContent}>
-                <div className="card p-3">
+
+            <div className="card p-3"  onMouseEnter={onMouseEnterEvent} onMouseOut={onMouseOutEvent}>
                 <div className={!showContent ? "card-image" : "card-image card-image-active"}>
-                        <figure className="image">
-                            {equip.fields.media !== undefined ? <img src={getImageUrl(equip.fields.media[0])} className="image" width="200" height="auto" alt={equip.fields.title}></img> : <img src="nopreview.jpg" className="image" width="200" height="auto" alt={equip.fields.title}></img>}
-                        </figure>
+                <ImageSlider showContent={showContent} slideshow={slideshow} media={equip.fields.media}></ImageSlider>
                         <div className="card-content is-overlay is-clipped">
                         <span className="tags has-addons is-pulled-right">
                                  {equip.fields.price == 0 ?
@@ -69,7 +80,7 @@ function EquipmentCard( { equip }){
                     </span>
                     <span className="more-info">
                     <div className="column is-centered" style={{"margin":"0", "padding": "0"}}>
-                        <div className="container is-fluid">
+                        <div className="container is-fluid" onClick={toggleCardContent}>
                             { !showContent ? <p className="is-size-7 has-text-centered has-text-white">MORE INFO</p> : null }
                             <span className="more-info-icon">
                                 <FontAwesomeIcon className="icon is-small has-text-white" icon={showContent ? faChevronDown : faChevronUp } />
@@ -78,7 +89,6 @@ function EquipmentCard( { equip }){
                     </div>
                     </span>
                 </div>
-            </div>
     )
 }
 

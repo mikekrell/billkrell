@@ -23,7 +23,9 @@
     "react": "16.13.1",
     "react-awesome-slider": "^4.1.0",
     "react-dom": "16.13.1",
+    "react-slick": "^0.27.11",
     "sass": "^1.26.10",
+    "slick-carousel": "^1.8.1",
     "swr": "^0.3.1",
     "toastify-js": "^1.9.1",
     "twilio": "^3.49.0"

@@ -11,8 +11,7 @@ var contentful = require('contentful');
 function Used( {posts, equip} ){ 
     const size = useWindowSize();
     const [windowSize, setWindowSize] = useState({height:0, width:0})
-    const [gridView, setGridView] = useState(true)
-
+  
     useEffect(() => { 
         if (size) {
             setWindowSize({ height: size.height, width: size.width})
@@ -21,10 +20,8 @@ function Used( {posts, equip} ){
         console.log(windowSize.height,windowSize.width)
     }, [size])
 
-    const showColumns = windowSize.width >= 400
-    
     return (
-                    <>
+            <>
                 <Head>
                     <title>Used Inventory - Bill Krell / Feenaughty</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -47,48 +44,15 @@ function Used( {posts, equip} ){
                 <section className="section">
                     <div className="container">
                         <div className="table-container">
-                        {gridView ? 
                             <div className="columns is-multiline">
                                 {equip.map((equip, i) => (
-                                    <EquipmentCard key={i} equip={equip}></EquipmentCard>
+                                    <div className="column is-one-third-desktop is-half-tablet" >
+                                        <EquipmentCard key={i} equip={equip}></EquipmentCard>
+                                    </div>
                                 ))}
                             </div>
-                            :
-                            <table className={showColumns ? "table is-striped is-hoverable is-scrollable" : "table is-striped is-hoverable is-scrollable is-narrow is-bordered"}>
-                                <thead>
-                                    {showColumns ?
-                                        <tr>
-                                            <th></th>
-                                            <th>Year</th>
-                                            <th>Manufacture</th>
-                                            <th>Model</th>
-                                            <th>Type</th>
-                                            <th>Hours</th>
-                                            <th>Weight(lb)</th>
-                                            <th>Weekly Rental</th>
-                                            <th>Monthly Rental</th>
-                                            <th>Price</th>
-                                        </tr>
-                                        :
-                                        <tr>
-                                            <th>Year</th>
-                                            <th>Manufacture</th>
-                                            <th>Model</th>
-                                            <th>Weekly Rental</th>
-                                            <th>Monthly Rental</th>
-                                            <th>Price</th>
-                                        </tr>
-                                    }
-                                </thead>
-                                <tbody>
-                                    {equip.map((equip, i) => (
-                                        <EquipmentRow showColumns={showColumns} key={i} equip={equip}></EquipmentRow>
-                                    ))}
-                                </tbody>
-                            </table>
-                        }
                         </div>
-                    </div>
+                    </div>s
                 </section>
             </>
     )

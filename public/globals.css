@@ -39,12 +39,12 @@ a {
   transition-duration: .2s;
 }
 
- .card:hover {
+ /* .card:hover {
   padding: 2px;
   transition: 0.2s;
   transition-timing-function: ease-out;
   transition-timing-function: cubic-bezier(0, 0, 0.58, 1);
- }
+ } */
 
   .card:hover .more-info{
   padding-bottom: 5px;

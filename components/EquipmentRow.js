@@ -6,6 +6,8 @@ function EquipmentRow({ equip, showColumns }){
         currency: 'USD',
         minimumFractionDigits: 2
     })
+
+    
     return (
         <tr>
             {!showColumns ? null :
