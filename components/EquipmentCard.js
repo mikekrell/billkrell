@@ -76,14 +76,17 @@ function EquipmentCard({ equip, swipeLeft }){
                 <div className={!showContent ? "card-image" : "card-image card-image-active"}>
                     <ImageSlider slideIndex={slideIndex} swipeLeft={swipeLeft} showContent={showContent} slideshow={slideshow} media={equip.fields.media}></ImageSlider>
                     <div className="card-content is-overlay is-clipped">
+                    {equip.fields.price == 0 ?
                         <span className="tags has-addons is-pulled-right">
-                            {equip.fields.price == 0 ?
-                                <span className='tag  is-medium has-addon has-background-warning '><FontAwesomeIcon className="icon is-small" icon={faPhone} /></span> : <span className='tag  is-medium has-addon has-background-success has-text-white'>$</span>
-                            }
-                            <span className={equip.fields.price == 0 ? 'tag is-medium' : 'tag is-medium'}>
-                                {equip.fields.price == 0 ? `Call for Quote` : formatter.format(equip.fields.price)}
+                            <span className='tag is-medium has-addon has-background-warning'><FontAwesomeIcon className="icon is-small" icon={faPhone} /></span>
+                            <span className='tag is-medium'>
+                                    Call Me
                             </span>
-                        </span>
+                        </span> : <span className="tags has-addons is-pulled-right">
+                            <span className='tag is-medium has-addon has-background-success has-text-white'>$</span>
+                            <span className="tag is-medium">{formatter.format(equip.fields.price)}</span>
+                            </span>
+                        }
                         <span className="tags has-addons is-pulled-left" style={{ "marginRight": "10px" }} onClick={toggleThumbnails}>
                             <span className="tag">{equip.fields.media !== undefined && equip.fields.media.length > 0 ? equip.fields.media.length : '0'}</span>
                             <span className="tag"><FontAwesomeIcon className="icon is-small" icon={faImage} /></span>

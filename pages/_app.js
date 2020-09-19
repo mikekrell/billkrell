@@ -22,6 +22,10 @@ function MyApp({ Component, pageProps }) {
     <>
     <Head>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+        />
     </Head>
 
       <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
@@ -54,7 +58,7 @@ function MyApp({ Component, pageProps }) {
       <div className="container is-full">
         <div className="column is-centered">
           <a href="tel:+15039563956">
-          <button className={size.width > 374 ? "button fab fab-is-desktop fab-shadow is-rounded is-success" : "button fab fab-shadow is-rounded is-success"}>
+            <button className= "button fab fab-shadow is-rounded has-background-success-dark animate__animated animate__pulse animate__faster">
             <span>
               <figure className="image is-48x48 noheight">
                 <img className="is-rounded" src="https://media-exp1.licdn.com/dms/image/C5603AQH_6_OPXQjhfQ/profile-displayphoto-shrink_400_400/0?e=1605744000&v=beta&t=_tgK9cTp2iI2pwszZ16GTluy0PbktUrhNAj9MTGF7s4"/>
