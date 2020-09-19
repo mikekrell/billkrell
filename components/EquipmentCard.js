@@ -77,12 +77,13 @@ function EquipmentCard({ equip, swipeLeft }){
                     <ImageSlider slideIndex={slideIndex} swipeLeft={swipeLeft} showContent={showContent} slideshow={slideshow} media={equip.fields.media}></ImageSlider>
                     <div className="card-content is-overlay is-clipped">
                     {equip.fields.price == 0 ?
+                        <a href="tel:+15039563956">
                         <span className="tags has-addons is-pulled-right">
                             <span className='tag is-medium has-addon has-background-warning'><FontAwesomeIcon className="icon is-small" icon={faPhone} /></span>
                             <span className='tag is-medium'>
                                     Call Me
                             </span>
-                        </span> : <span className="tags has-addons is-pulled-right">
+                        </span></a> : <span className="tags has-addons is-pulled-right">
                             <span className='tag is-medium has-addon has-background-success has-text-white'>$</span>
                             <span className="tag is-medium">{formatter.format(equip.fields.price)}</span>
                             </span>
