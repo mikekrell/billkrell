@@ -1,4 +1,4 @@
-import { useState, useEffect, ReactElement} from 'react'
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
 import EquipmentCard from '../components/EquipmentCard'
 import useWindowSize from '../hooks/use-window-size';
@@ -9,7 +9,7 @@ function Used( {posts, equip} ){
     const size = useWindowSize();
     const [windowSize, setWindowSize] = useState({height:0, width:0})
     const [swipeLeft, setSwipeLeft] = useState(false)
-  
+
     useEffect(() => { 
         if (size) {
             setWindowSize({ height: size.height, width: size.width})
@@ -51,7 +51,7 @@ function Used( {posts, equip} ){
                                 ))}
                             </div>
                         </div>
-                    </div>s
+                    </div>
                 </section>
             </>
     )

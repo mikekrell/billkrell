@@ -6,10 +6,13 @@ import 'bulma'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'pure-react-carousel/dist/react-carousel.es.css';
+import useWindowSize from '../hooks/use-window-size';
+
 import {useState} from 'react'
 
 
 function MyApp({ Component, pageProps }) {
+  const size = useWindowSize();
   const [menu, setMenu] = useState(false)
   const setHamburgerMenu = () => {
     setMenu(!menu)
@@ -48,16 +51,24 @@ function MyApp({ Component, pageProps }) {
         </div>
       </nav>
       <Component {...pageProps} />
-      {/* <Subscribe></Subscribe> */}
-      <footer class="footer is-fullwidth has-background-black" style={{"position": "fixed"}}>
-        <div class="content has-text-centered">
-          <p>
-            <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-      is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-    </p>
+      <div className="container is-full">
+        <div className="column is-centered">
+          <a href="tel:+15039563956">
+          <button className={size.width > 374 ? "button fab fab-is-desktop fab-shadow is-rounded is-success" : "button fab fab-shadow is-rounded is-success"}>
+            <span>
+              <figure className="image is-48x48 noheight">
+                <img className="is-rounded" src="https://media-exp1.licdn.com/dms/image/C5603AQH_6_OPXQjhfQ/profile-displayphoto-shrink_400_400/0?e=1605744000&v=beta&t=_tgK9cTp2iI2pwszZ16GTluy0PbktUrhNAj9MTGF7s4"/>
+              </figure>
+              </span>
+            {/* <span class="icon">
+              <FontAwesomeIcon className="icon is-small" icon={faPhone}></FontAwesomeIcon>
+            </span> */}
+            <span className="subtitle has-text-white has-text-weight-bold" style={{ "marginLeft": "10px", "marginRight": "10px" }}>{size.width > 374 ? '(503)956-3956' : 'Call Me'}</span>
+          </button>
+          </a>
         </div>
-      </footer>
+      </div>
+
     </>
   )
 }
