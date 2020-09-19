@@ -63,7 +63,7 @@ function MyApp({ Component, pageProps }) {
             {/* <span class="icon">
               <FontAwesomeIcon className="icon is-small" icon={faPhone}></FontAwesomeIcon>
             </span> */}
-            <span className="subtitle has-text-white has-text-weight-bold" style={{ "marginLeft": "10px", "marginRight": "10px" }}>{size.width > 374 ? '(503)956-3956' : 'Call Me'}</span>
+              <span className="subtitle has-text-white has-text-weight-bold" style={{ "marginLeft": "10px", "marginRight": "10px" }}>(503)956-3956</span>
           </button>
           </a>
         </div>
