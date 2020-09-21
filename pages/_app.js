@@ -50,10 +50,6 @@ function MyApp({ Component, pageProps }) {
 
         <div id="navbarBasicExample" className={menu ? "navbar-menu is-active" : "navbar-menu"} >
           <div className="navbar-start">
-
-            <Link href="/used" as="/used">
-              <a className="navbar-item">Used Inventory</a>
-            </Link>
           </div>
           <div className="navbar-end">
             <div className="navbar-item">

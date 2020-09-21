@@ -1,62 +1,78 @@
+import { useState, useEffect } from 'react'
 import Head from 'next/head'
-import Link from 'next/link'
-import Modal from '../components/Modal'
-import { useState } from 'react';
+import EquipmentCard from '../components/EquipmentCard'
+import useWindowSize from '../hooks/use-window-size';
+var contentful = require('contentful');
 
-Home.getInitialProps = ctx => {
-  // We check for ctx.res to make sure we're on the server.
-  if (ctx.res) {
-    ctx.res.writeHead(302, { Location: '/used' });
-    ctx.res.end();
-  }
-  return {};
+
+function Home( {equip} ){ 
+    const size = useWindowSize();
+    const [windowSize, setWindowSize] = useState({height:0, width:0})
+    const [swipeLeft, setSwipeLeft] = useState(false)
+
+    useEffect(() => { 
+        if (size) {
+            console.log(windowSize.height, windowSize.width)
+            setWindowSize({ height: size.height, width: size.width})
+        }
+    }, [size])
+
+
+    return (
+            <>
+                <Head>
+                    <title>Used Inventory - Bill Krell / Feenaughty</title>
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta charSet="utf-8" />
+                    <meta name="description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." />
+
+                    <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
+                    <meta property="og:title" content="Used Inventory - Bill Krell / Feenaughty" key="ogtitle" />
+                    <meta property="og:description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." key="ogdesc" />
+                    <link rel="icon" href="/favicon.ico" />
+                </Head>
+                <section className="section has-background-light mt-2">
+                    <div className="container">
+                        <h1 className="title mt-5">Used Inventory</h1>
+                        <h2 className="subtitle">
+                            A complete list of what we currently have in our <strong>Inventory</strong>. If you see anything you like, please contact me.
+                    </h2>
+                    </div>
+                </section>
+                <section className="section">
+                    <div className="container">
+                        <div className="table-container">
+                            <div className="columns is-multiline">
+                                {equip.map((equip, i) => (
+                                    <div className="column is-one-third-desktop is-half-tablet" >
+                                        <EquipmentCard swipeLeft={swipeLeft} key={i} equip={equip}></EquipmentCard>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </>
+    )
 }
 
-export default function Home() {
+export const getStaticProps = async () => {
+    // Call an external API endpoint to get posts.
+    console.log('fetching data')
+        var client = contentful.createClient({
+            space: process.env.CONTENTFUL_SPACE,
+            accessToken: process.env.CONTENTFUL_TOKEN
+        })
 
-  const [ modal, setOpenModal ] = useState(false);
-  const openModal = () => setOpenModal(true)
-  const closeModal = () => setOpenModal(false)
+            const resp = await client.getEntries({ content_type: 'equipment' })
+            const equip = await resp.items
 
-  return (
-    <>
-    <script src="https://kit.fontawesome.com/4fedb228b0.js" crossOrigin="anonymous"></script>
-      <Head>
-        <title>Bill Krell - Feenaughty</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <Modal isOpen={modal} closeModal={closeModal}></Modal>
-      <section className="hero mt-2 has-background-light">
-        <div className="hero-body">
-          <div className="container">
-            <div className="columns">
-              <div className="column pl-2">
-                <img src="pngkit_machinery-png_3405560.png"></img>
-              </div>
-              <div className="column pr-4">
-                <h1 className="title mt-6">
-                  Let me help find what you are looking for!
-                </h1>
-                <h2 className="subtitle mt-2">
-                  All you need to do is let me know.
-                </h2>
-                <p>
-                  You can view our used inventory, or contact me directy to talk about getting you into a NEW machine. Its easier than you might think, lots of ways to help. Clicking "Contact Me" will call my phone directy, available whenever you need me.
-                </p>
-                <p className="buttons mt-6 is-pulled-right mr-5">
-                  <Link as="/used" href="/used">
-                    <button className="button is-md">
-                      View Used Inventory</button>
-                  </Link>
-                  <button className="button is-md has-background-warning" onClick={openModal}>
-                    Contact Me
-                  </button>
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-    </>
-  )
+    return {
+        props: {
+            equip
+        },
+    }
 }
+
+
+export default Home
