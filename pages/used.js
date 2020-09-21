@@ -65,18 +65,11 @@ export const getStaticProps = async () => {
             accessToken: process.env.CONTENTFUL_TOKEN
         })
 
-            const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-            const posts = await res.json()
-
             const resp = await client.getEntries({ content_type: 'equipment' })
             const equip = await resp.items
 
-    //const equip = await client.getEntries({ content_type: 'equipment' }).then(entry => entry.items)
-    // const res = await fetch('https://jsonplaceholder.typicode.com/todos/1')
-    // const posts = await res.json()
     return {
         props: {
-            posts,
             equip
         },
     }
