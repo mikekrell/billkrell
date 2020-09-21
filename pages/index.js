@@ -21,7 +21,7 @@ function Home( {equip} ){
     return (
             <>
                 <Head>
-                    <title>Used Inventory - Bill Krell / Feenaughty</title>
+                    <title>Bill Krell / Feenaughty</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta charSet="utf-8" />
                     <meta name="description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." />
