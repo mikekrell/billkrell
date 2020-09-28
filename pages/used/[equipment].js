@@ -45,7 +45,7 @@ function EquipmentPage({ equipment }) {
             <meta charSet="utf-8" />
             <meta name="description" content={equipment[0].fields.description} />
             <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
-            <meta property="og:title" content={`${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | Feenaughty`} key="ogtitle" />
+                <meta property="og:title" content={`${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | ${formatter.format(equipment[0].fields.price)}`} key="ogtitle" />
                 <meta property="og:image" content={getImageUrl(equipment[0])} />
             <meta property="og:description" content={equipment[0].fields.description} />
             <link rel="icon" href="/favicon.ico" />
