@@ -33,7 +33,7 @@ function Home({ equipment } ){
     return (
             <>
                 <Head>
-                    <title>Bill Krell / Feenaughty</title>
+                    <title>Bill Krell | Feenaughty</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta charSet="utf-8" />
                     <meta name="description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." />
@@ -56,17 +56,15 @@ function Home({ equipment } ){
                     content: {
                         position: 'absolute',
                         top: '100px',
-                        left: '5%',
-                        right: '5%',
+                        left: '10%',
+                        right: '10%',
                         bottom: '100px',
                         border: '1px solid #ccc',
                         background: '#fff',
                         overflow: 'auto',
                         WebkitOverflowScrolling: 'touch',
                         borderRadius: '4px',
-                        outline: 'none',
-                        padding: '10px'
-
+                        outline: 'none'
                     }
             }} isOpen={!!router.query.id} onRequestClose={()=>router.push('/')}>
                 {!!router.query.id ? <EquipmentPage equipment={equipment.filter(item => item.sys.id == router.query.id)}></EquipmentPage> : null }

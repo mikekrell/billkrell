@@ -1,4 +1,5 @@
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import useSWR from 'swr'
 import Slider from 'react-slick';
 import { useEffect, useRef } from 'react'
@@ -38,6 +39,17 @@ function EquipmentPage({ equipment }) {
     const getImageUrl = (equipment) => `${equipment.fields.media[0].fields.file.url}?w=400&fm=png`
     return (
         <>
+        <Head>
+            <title>{`${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | Feenaughty`}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta charSet="utf-8" />
+            <meta name="description" content={equipment[0].fields.description} />
+            <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
+            <meta property="og:title" content={`${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | Feenaughty`} key="ogtitle" />
+                <meta property="og:image" content={getImageUrl(equipment[0])} />
+            <meta property="og:description" content={equipment[0].fields.description} />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
         <section className="section mt-2">
             <div className="container">
                 <div className="columns">

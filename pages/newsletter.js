@@ -41,7 +41,7 @@ export default function Newsletter({ children, pageTitle, description, ...props 
     return (
         <>
             <Head>
-                    <title>Subscribe to my newsletter - Bill Krell / Feenaughty</title>
+                    <title>Subscribe to my newsletter - Bill Krell | Feenaughty</title>
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta charSet="utf-8" />
                     <meta name="description" content="Be the first to be notified about the latest used equipment available for purchase. You’ll also get access to my weekly newsletter where you’ll see what sold last week and what’s new, as well as industry info." />
