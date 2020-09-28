@@ -157,3 +157,16 @@ a {
 .noheight{
   height: auto !important;
 }
+
+/* .ReactModal__Overlay {
+  z-index: 999 !important;
+}
+
+.Modal {
+  position: absolute;
+  top: 150px;
+  left: 150px;
+  right: 150px;
+  bottom: 150px;
+  background-color: white;
+} */

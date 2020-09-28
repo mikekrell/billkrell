@@ -7,18 +7,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import useWindowSize from '../hooks/use-window-size';
-import { Animated } from "react-animated-css";
+import {useScroll} from '../hooks/useScroll'
 import {useState, useEffect} from 'react'
+import Subscribe from '../components/Subscribe'
 
 
 function MyApp({ Component, pageProps }) {
   const size = useWindowSize();
+  let scroll = null;
+  if (typeof window !== 'undefined') {
+    scroll = useScroll();
+  }
   const [menu, setMenu] = useState(false)
   const [int, setInt] = useState(false)
-  const setHamburgerMenu = () => {
-    setMenu(!menu)
-  }
-
+  const [atBottom, setAtBottom] = useState(false)
 
   useEffect(()=>{
     setInterval(()=>{
@@ -28,6 +30,16 @@ function MyApp({ Component, pageProps }) {
       },1000)
     }, 8000)
   }, [])
+
+  useEffect(()=>{
+    if (typeof window !== 'undefined') {
+      if ((window.innerHeight + Math.ceil(window.pageYOffset + 1)) >= document.body.offsetHeight) {
+        setAtBottom(true)
+      } else {
+        setAtBottom(false)
+      }
+    }
+  }, [scroll?.scrollY])
 
   return (
     <>
@@ -40,11 +52,6 @@ function MyApp({ Component, pageProps }) {
         <div className="navbar-brand">
           <a className="navbar-item">
             <img alt="nav-logo" src="Feenaughty_360x.png" className="image is-16x9" ></img>
-          </a>
-          <a role="button" onClick={setHamburgerMenu} className={menu ? "navbar-burger burger is-active" : "navbar-burger burger" } aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
-            <span ></span>
-            <span ></span>
-            <span ></span>
           </a>
         </div>
 
@@ -61,20 +68,22 @@ function MyApp({ Component, pageProps }) {
       <Component {...pageProps} />
       <div className="container is-full">
         <div className="column is-centered">
+          {atBottom ? null : 
           <a href="tel:+15039563956">
             <button className={int ? "button fab fab-active fab-shadow is-rounded has-background-success-dark" : "button fab fab-shadow is-rounded has-background-success-dark"}>
-            <span>
-              <figure className="image is-48x48 noheight">
-                <img className="is-rounded" src="https://media-exp1.licdn.com/dms/image/C5603AQH_6_OPXQjhfQ/profile-displayphoto-shrink_400_400/0?e=1605744000&v=beta&t=_tgK9cTp2iI2pwszZ16GTluy0PbktUrhNAj9MTGF7s4"/>
-              </figure>
+              <span>
+                <figure className="image is-48x48 noheight">
+                  <img className="is-rounded" src="https://media-exp1.licdn.com/dms/image/C5603AQH_6_OPXQjhfQ/profile-displayphoto-shrink_400_400/0?e=1605744000&v=beta&t=_tgK9cTp2iI2pwszZ16GTluy0PbktUrhNAj9MTGF7s4" />
+                </figure>
               </span>
 
               <span className="subtitle has-text-white has-text-weight-bold" style={{ "marginLeft": "10px", "marginRight": "10px" }}>(503)956-3956</span>
-          </button>
-          </a>
+            </button>
+          </a>}
         </div>
       </div>
 
+      <Subscribe></Subscribe>
     </>
   )
 }

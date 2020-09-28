@@ -59,7 +59,7 @@ function EquipmentCard({ equip, swipeLeft }){
                                     <td>{formatter.format(equip.fields.monthlyRate)}</td>
                                 </tr>
                             </table>
-                    <p className="is-size-6 has-text-white ">{equip.fields.description}</p>
+                            <p className="is-size-6 has-text-white ">{equip.fields.description}</p>
                         </div>
                     }
                     </span>
@@ -74,7 +74,7 @@ function EquipmentCard({ equip, swipeLeft }){
                     </div>
                     </span>
                 <div className={!showContent ? "card-image" : "card-image card-image-active"}>
-                    <ImageSlider slideIndex={slideIndex} swipeLeft={swipeLeft} showContent={showContent} slideshow={slideshow} media={equip.fields.media}></ImageSlider>
+                    <ImageSlider slideIndex={slideIndex} swipeLeft={swipeLeft} showContent={showContent} slideshow={false} media={equip.fields.media} equip={equip}></ImageSlider>
                     <div className="card-content is-overlay is-clipped">
                     {equip.fields.price == 0 ?
                         <a href="tel:+15039563956">

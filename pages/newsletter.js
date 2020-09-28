@@ -1,7 +1,9 @@
 import React, { useState, useRef} from 'react';
+import {useRouter} from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
-export default function Subscribe_to_newsletter({ children, pageTitle, description, ...props }) {
+export default function Newsletter({ children, pageTitle, description, ...props }) {
+    
     const [success, setSuccess] = useState(false)
     const [loading, setLoading] = useState(false)
     const firstName = useRef(null)

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev -p 3001",
     "build": "next build",
     "start": "next start"
   },
@@ -30,6 +30,7 @@
     "react-awesome-slider": "^4.1.0",
     "react-dom": "16.13.1",
     "react-floating-action-button": "^1.0.5",
+    "react-modal": "^3.11.2",
     "react-slick": "^0.27.11",
     "react-touch": "^0.4.4",
     "sass": "^1.26.10",
