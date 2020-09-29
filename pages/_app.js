@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import Head from 'next/head'
 import '../public/globals.css'
 import "toastify-js/src/toastify.css"

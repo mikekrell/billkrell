@@ -98,7 +98,7 @@ function Home({ equipment } ){
     )
 }
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
         // Call an external API endpoint to get posts.
         var client = contentful.createClient({
             space: process.env.CONTENTFUL_SPACE,

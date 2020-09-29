@@ -1,10 +1,5 @@
-import { useRouter } from 'next/router'
-import Head from 'next/head'
-import useSWR from 'swr'
-import Slider from 'react-slick';
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
-import Subscribe from '../../components/Subscribe'
 var contentful = require('contentful');
 
 function EquipmentPage({ equipment }) {
@@ -114,26 +109,26 @@ function EquipmentPage({ equipment }) {
     )
 }
 
-export const getStaticPaths = async () => {
+// export const getStaticPaths = async () => {
 
-    var client = contentful.createClient({
-        space: process.env.CONTENTFUL_SPACE,
-        accessToken: process.env.CONTENTFUL_TOKEN
-    })
+//     var client = contentful.createClient({
+//         space: process.env.CONTENTFUL_SPACE,
+//         accessToken: process.env.CONTENTFUL_TOKEN
+//     })
 
-    const resp = await client.getEntries({ content_type: 'equipment' })
-    const equipment = await resp.items
-    const paths = equipment.map((equip) => {
-        return {
-            params: { slug: equip.fields.slug }
-        }
-    })
-    // We'll pre-render only these paths at build time.
-    // { fallback: false } means other routes should 404.
-    return { paths, fallback: false }
-}
+//     const resp = await client.getEntries({ content_type: 'equipment' })
+//     const equipment = await resp.items
+//     const paths = equipment.map((equip) => {
+//         return {
+//             params: { slug: equip.fields.slug }
+//         }
+//     })
+//     // We'll pre-render only these paths at build time.
+//     // { fallback: false } means other routes should 404.
+//     return { paths, fallback: false }
+// }
 
-export const getStaticProps = async (ctx) => {
+export const getServerSideProps = async (ctx) => {
     const slug = ctx.params.slug;
 
     var client = contentful.createClient({
