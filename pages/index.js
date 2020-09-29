@@ -12,7 +12,7 @@ Modal.setAppElement("#__next");
 var contentful = require('contentful');
 
 
-function Home({ equipment } ){ 
+function Home({ equipment, loading } ){ 
     const router = useRouter();
     const size = useWindowSize();
     const [windowSize, setWindowSize] = useState({height:0, width:0})
@@ -29,6 +29,10 @@ function Home({ equipment } ){
         }
     }, [size])
 
+    useEffect(()=>{
+        console.log(loading)
+    }, [loading] )
+
 
     return (
             <>
@@ -43,6 +47,7 @@ function Home({ equipment } ){
                     <meta property="og:description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." key="ogdesc" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
+            
             <Modal style={{
                     overlay: {
                         position: 'fixed',

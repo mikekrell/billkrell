@@ -9,6 +9,7 @@ import useWindowSize from '../hooks/use-window-size';
 import {useScroll} from '../hooks/useScroll'
 import {useState, useEffect} from 'react'
 import Subscribe from '../components/Subscribe'
+import Router from 'next/router'
 
 
 function MyApp({ Component, pageProps }) {
@@ -20,6 +21,24 @@ function MyApp({ Component, pageProps }) {
   const [menu, setMenu] = useState(false)
   const [int, setInt] = useState(false)
   const [atBottom, setAtBottom] = useState(false)
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    const start = () => {
+      setLoading(true);
+    };
+    const end = () => {
+      setLoading(false);
+    };
+      Router.events.on("routeChangeStart", start);
+      Router.events.on("routeChangeComplete", end);
+      Router.events.on("routeChangeError", end);
+    return () => {
+      Router.events.off("routeChangeStart", start);
+      Router.events.off("routeChangeComplete", end);
+      Router.events.off("routeChangeError", end);
+    }
+  })
 
   useEffect(()=>{
     setInterval(()=>{
@@ -46,9 +65,7 @@ function MyApp({ Component, pageProps }) {
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
     </Head>
-
       <nav className="navbar is-fixed-top has-background-light"  role="navigation" aria-label="main navigation">
-        <div id="navbarBasicExample" className="navbar-menu" >
           <div className="navbar-brand">
             <a className="navbar-item ml-5">
               <img alt="nav-logo" src="/billkrell_logo.png" className="image"></img>
@@ -59,9 +76,8 @@ function MyApp({ Component, pageProps }) {
           </div>
           <div className="navbar-end">
           </div>
-        </div>
       </nav>
-      <Component {...pageProps} />
+      <Component loading={loading} {...pageProps} />
       <div className="container is-full">
         <div className="column is-centered">
           {atBottom ? null : 
