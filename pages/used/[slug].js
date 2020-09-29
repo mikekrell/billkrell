@@ -51,15 +51,15 @@ function EquipmentPage({ equipment }) {
                 {`{
                     "@context" : "http://schema.org",
                     "@type" : "Product",
-                    "name" : ${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title},
-                    "image" : ${getImageUrl(equipment[0])},
-                    "description" : ${equipment[0].fields.description},
+                    "name" : "${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title}",
+                    "image" : "${getImageUrl(equipment[0])}",
+                    "description" : "${equipment[0].fields.description}",
                     "brand" : {
                         "name": "Feenaughty"
                     }
                     "offers" : {
-                        "@type" : "Offer",
-                        "price" : ${formatter.format(equipment[0].fields.price)}
+                        "@type" : "Offer","
+                        "price" : "${formatter.format(equipment[0].fields.price)}"
                     }
                 }`}
             </script>
