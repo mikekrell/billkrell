@@ -56,7 +56,7 @@ function EquipmentPage({ equipment }) {
                     "description" : "${equipment[0].fields.description}",
                     "brand" : {
                         "name": "Feenaughty"
-                    }
+                    },
                     "offers" : {
                         "@type" : "Offer",
                         "price" : "${formatter.format(equipment[0].fields.price)}"
