@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import Head from 'next/head'
 import { useEffect, useRef } from 'react'
 var contentful = require('contentful');
 
@@ -34,6 +35,34 @@ function EquipmentPage({ equipment }) {
 
     const getImageUrl = (equipment) => `${equipment.fields.media[0].fields.file.url}?w=500&fm=png`
     return (
+        <>
+            <Head>
+                <title>{`${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | Feenaughty`}</title>
+                <meta name="viewport" content="width=device-width, initial-scale=1" />
+                <meta charSet="utf-8" />
+                <meta name="description" content={equipment[0].fields.description} />
+                <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
+                <meta property="og:title" content={equipment[0].fields.price == 0 ? `${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | Feenaughty` : `${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | ${formatter.format(equipment[0].fields.price)}`} key="ogtitle" />
+                <meta property="og:image" content={getImageUrl(equipment[0])} />
+                <meta property="og:description" content={equipment[0].fields.description} />
+                <link rel="icon" href="/favicon.ico" />
+            </Head>
+            <script type="application/ld+json">
+                {`{
+                    "@context" : "http://schema.org",
+                    "@type" : "Product",
+                    "name" : ${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title},
+                    "image" : ${getImageUrl(equipment[0])},
+                    "description" : ${equipment[0].fields.description},
+                    "brand" : {
+                        "name": "Feenaughty"
+                    }
+                    "offers" : {
+                        "@type" : "Offer",
+                        "price" : ${formatter.format(equipment[0].fields.price)}
+                    }
+                }`}
+            </script>
         <div className="container is-fluid mt-5">
             <section className="section pb-0">
                 <div className="container">
@@ -106,6 +135,7 @@ function EquipmentPage({ equipment }) {
                 </div>
             </section>
         </div>
+        </>
     )
 }
 
