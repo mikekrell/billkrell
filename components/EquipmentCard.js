@@ -43,7 +43,7 @@ function EquipmentCard({ equip, swipeLeft }){
                     <span className="image-title">
                         <p className="is-size-5 has-text-white image-manufacture-title"><span className="has-text-weight-bold">{equip.fields.year}</span> {equip.fields.manufacture}</p>
                         <h1 className="is-size-2 has-text-white has-text-weight-bold">{equip.fields.title}</h1>
-                    {!showContent ? null :
+                    {showContent ? null :
                         <div className="column is-centered more-info-content-active">
                             <table className="table has-text-white is-fullwidth table-trans is-size-6">
                                 <tr>
@@ -65,15 +65,15 @@ function EquipmentCard({ equip, swipeLeft }){
                     </span>
                     <span className="more-info">
                     <div className="column is-centered" style={{"margin":"0", "padding": "0"}}>
-                        <div className="container is-fluid" onClick={toggleCardContent}>
-                            { !showContent ? <p className="is-size-7 has-text-centered has-text-white">MORE INFO</p> : null }
+                        <div className="container is-fluid">
+                            { showContent ? <p className="is-size-7 has-text-centered has-text-white">MORE INFO</p> : null }
                             <span className="more-info-icon">
                                 <FontAwesomeIcon className="icon is-small has-text-white" icon={showContent ? faChevronDown : faChevronUp } />
                             </span>
                             </div>
                     </div>
                     </span>
-                <div className={!showContent ? "card-image" : "card-image card-image-active"}>
+                <div className={showContent ? "card-image" : "card-image card-image-active"}>
                     <ImageSlider slideIndex={slideIndex} swipeLeft={swipeLeft} showContent={showContent} slideshow={false} media={equip.fields.media} equip={equip}></ImageSlider>
                     <div className="card-content is-overlay is-clipped">
                     {equip.fields.price == 0 ?
