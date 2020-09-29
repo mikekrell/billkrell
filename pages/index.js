@@ -5,7 +5,7 @@ import Head from 'next/head'
 import EquipmentCard from '../components/EquipmentCard'
 import useWindowSize from '../hooks/use-window-size';
 import Modal from 'react-modal';
-import EquipmentPage from './used/[equipment]'
+import EquipmentPage from './used/[slug]'
 
 Modal.setAppElement("#__next");
 
@@ -83,7 +83,7 @@ function Home({ equipment } ){
                             <div className="columns is-multiline">
                                 {equipment.map((equip, i) => (
                                     <div className="column is-one-third-desktop is-half-tablet" >
-                                        <Link href={`/used/${equip.sys.id}`} as={`/used/${equip.sys.id}`}>
+                                        <Link href={`/used/${equip.fields.slug}`} as={`/used/${equip.fields.slug}`}>
                                         <a>
                                             <EquipmentCard swipeLeft={swipeLeft} key={i} equip={equip}></EquipmentCard> 
                                         </a>

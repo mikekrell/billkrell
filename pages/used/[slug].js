@@ -39,25 +39,25 @@ function EquipmentPage({ equipment }) {
 
     const getImageUrl = (equipment) => `${equipment.fields.media[0].fields.file.url}?w=500&fm=png`
     return (
-        <div class="container is-fluid mt-5">
-            <section class="section pb-0">
+        <div className="container is-fluid mt-5">
+            <section className="section pb-0">
                 <div className="container">
-                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                    <nav className="breadcrumb" aria-label="breadcrumbs">
                         <ul>
                             <li><Link href="/"><a>Home</a></Link></li>
-                            <li class="is-active"><a>{`${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title}`}</a></li>
+                            <li className="is-active"><a>{`${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title}`}</a></li>
                         </ul>
                     </nav>
                 </div>
 
             </section>
-            <section class="section">
-                <div class="container">
-                    <div class="columns is-desktop is-vcentered">
-                        <div class="column is-6-desktop">
+            <section className="section">
+                <div className="container">
+                    <div className="columns is-desktop is-vcentered">
+                        <div className="column is-6-desktop">
                             <p className="is-size-5 image-manufacture-title"><span className="has-text-weight-bold">{equipment[0].fields.year}</span> {equipment[0].fields.manufacture}</p>
-                            <h2 class="is-size-2 has-text-weight-bold">{equipment[0].fields.title}</h2>
-                            <p class="subtitle mt-2"><span className="tags has-addons">
+                            <h2 className="is-size-2 has-text-weight-bold">{equipment[0].fields.title}</h2>
+                            <p className="subtitle mt-2"><span className="tags has-addons">
                                 <span className='tag is-medium has-addon has-background-success has-text-white'>$</span>
                                 <span className="tag is-medium">{formatter.format(equipment[0].fields.price)}</span>
                             </span></p>
@@ -75,7 +75,7 @@ function EquipmentPage({ equipment }) {
                                     </tr>
                                 </table>
                             </div>
-                            <p class="subtitle mt-3">{equipment[0].fields.description}</p>
+                            <p className="subtitle mt-3">{equipment[0].fields.description}</p>
                             <section>
                                 <div className="container">
                                     <div className="column is-size-6" style={{'textAlign':'center'}}>
@@ -83,24 +83,24 @@ function EquipmentPage({ equipment }) {
                                     </div>
                                 </div>
                             </section>
-                            <table class="table is-fullwidth">
+                            <table className="table is-fullwidth">
                                 <tbody>
                                     <tr>
                                         <td>Daily Rates</td>
-                                        <td class="has-text-right">{formatter.format(equipment[0].fields.weeklyRate)}</td>
+                                        <td className="has-text-right">{formatter.format(equipment[0].fields.weeklyRate)}</td>
                                     </tr>
                                     <tr>
                                         <td>Weekly</td>
-                                        <td class="has-text-right">{formatter.format(equipment[0].fields.weeklyRate)}</td>
+                                        <td className="has-text-right">{formatter.format(equipment[0].fields.weeklyRate)}</td>
                                     </tr>
                                     <tr>
                                         <td>Monthly</td>
-                                        <td class="has-text-right">{formatter.format(equipment[0].fields.motnhlyRate)}</td>
+                                        <td className="has-text-right">{formatter.format(equipment[0].fields.motnhlyRate)}</td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
-                        <div class="column is-6-desktop">
+                        <div className="column is-6-desktop">
                             <div className="columns">
                                 <div className="container">
                                     <div className="column"><img src={getImageUrl(equipment[0])} className="image pt-5" width="500" height="auto"></img></div>
@@ -125,7 +125,7 @@ export const getStaticPaths = async () => {
     const equipment = await resp.items
     const paths = equipment.map((equip) => {
         return {
-            params: { equipment: equip.sys.id }
+            params: { slug: equip.fields.slug }
         }
     })
     // We'll pre-render only these paths at build time.
@@ -134,7 +134,7 @@ export const getStaticPaths = async () => {
 }
 
 export const getStaticProps = async (ctx) => {
-    const id = ctx.params.equipment;
+    const slug = ctx.params.slug;
 
     var client = contentful.createClient({
         space: process.env.CONTENTFUL_SPACE,
@@ -146,7 +146,7 @@ export const getStaticProps = async (ctx) => {
 
     return {
         props: {
-            equipment: equipment.filter(item => item.sys.id == id)
+            equipment: equipment.filter(item => item.fields.slug == slug)
         },
     }
 }
