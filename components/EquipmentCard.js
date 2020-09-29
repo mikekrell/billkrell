@@ -88,7 +88,7 @@ function EquipmentCard({ equip, swipeLeft }){
                             <span className="tag is-medium">{formatter.format(equip.fields.price)}</span>
                             </span>
                         }
-                        <span className="tags has-addons is-pulled-left" style={{ "marginRight": "10px" }} onClick={toggleThumbnails}>
+                        <span className="tags has-addons is-pulled-left" style={{ "marginRight": "10px" }}>
                             <span className="tag">{equip.fields.media !== undefined && equip.fields.media.length > 0 ? equip.fields.media.length : '0'}</span>
                             <span className="tag"><FontAwesomeIcon className="icon is-small" icon={faImage} /></span>
                         </span>
