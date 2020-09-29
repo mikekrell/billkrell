@@ -78,12 +78,12 @@ function Home({ equipment } ){
                     </div>
                 </section>
                 <section className="section">
-                    <div className="container">
+                <div className="container" style={{ overflowX: 'hidden' }}>
                         <div className="table-container">
                             <div className="columns is-multiline">
                                 {equipment.map((equip, i) => (
                                     <div className="column is-one-third-desktop is-half-tablet" >
-                                        <Link href={`/?id=${equip.sys.id}`} as={`/used/${equip.sys.id}`}>
+                                        <Link href={`/used/${equip.sys.id}`} as={`/used/${equip.sys.id}`}>
                                         <a>
                                             <EquipmentCard swipeLeft={swipeLeft} key={i} equip={equip}></EquipmentCard> 
                                         </a>

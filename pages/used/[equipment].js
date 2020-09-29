@@ -2,6 +2,7 @@ import { useRouter } from 'next/router'
 import Head from 'next/head'
 import useSWR from 'swr'
 import Slider from 'react-slick';
+import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import Subscribe from '../../components/Subscribe'
 var contentful = require('contentful');
@@ -36,48 +37,30 @@ function EquipmentPage({ equipment }) {
         minimumFractionDigits: 0
     })
 
-    const getImageUrl = (equipment) => `${equipment.fields.media[0].fields.file.url}?w=400&fm=png`
+    const getImageUrl = (equipment) => `${equipment.fields.media[0].fields.file.url}?w=500&fm=png`
     return (
-        <>
-        <Head>
-            <title>{`${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | Feenaughty`}</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta charSet="utf-8" />
-            <meta name="description" content={equipment[0].fields.description} />
-            <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
-                <meta property="og:title" content={equipment[0].fields.price == 0 ? `${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | Feenaughty` : `${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title} | ${formatter.format(equipment[0].fields.price)}` } key="ogtitle" />
-                <meta property="og:image" content={getImageUrl(equipment[0])} />
-            <meta property="og:description" content={equipment[0].fields.description} />
-            <link rel="icon" href="/favicon.ico" />
-        </Head>
-        <section className="section mt-2">
-            <div className="container">
-                <div className="columns">
-                    <div className="column is-one-third">
-                        <Slider ref={sliderRef} className="pt-3 pl-3 pr-3">
-                            {
-                                equipment[0].fields.media.map((image, i) => (
-                                    <div>
-                                        <img key={image.fields.file.url} src={image.fields.file.url} className="image" width="400" height="auto"></img>
-                                    </div>
-                                ))
-                            }
-                        </Slider>
-                            <div className="columns pl-5 pr-5 is-multiline is-mobile">
-                                    {
-                                        equipment[0].fields.media.map(function (image, i) {
-                                            return (
-                                                <div className="column is-one-quarter-desktop is-one-quarter-mobile is-one-quarter-tablet p-3">
-                                                    <img onClick={() => handleThumbnailChange(i)} key={image.fields.file.url} src={image.fields.file.url} className="image" width="64" height="64"></img>
-                                                </div>
-                                            )
-                                        })}
-                                </div>
-                    </div>
-                        <div className="column pt-5 pl-5 has-background-light">
-                            <p className="is-size-5image-manufacture-title"><span className="has-text-weight-bold">{equipment[0].fields.year}</span> {equipment[0].fields.manufacture}</p>
-                            <h1 className="is-size-2 has-text-weight-bold">{equipment[0].fields.title}</h1>
+        <div class="container is-fluid mt-5">
+            <section class="section pb-0">
+                <div className="container">
+                    <nav class="breadcrumb" aria-label="breadcrumbs">
+                        <ul>
+                            <li><Link href="/"><a>Home</a></Link></li>
+                            <li class="is-active"><a>{`${equipment[0].fields.year} ${equipment[0].fields.manufacture} ${equipment[0].fields.title}`}</a></li>
+                        </ul>
+                    </nav>
+                </div>
 
+            </section>
+            <section class="section">
+                <div class="container">
+                    <div class="columns is-desktop is-vcentered">
+                        <div class="column is-6-desktop">
+                            <p className="is-size-5 image-manufacture-title"><span className="has-text-weight-bold">{equipment[0].fields.year}</span> {equipment[0].fields.manufacture}</p>
+                            <h2 class="is-size-2 has-text-weight-bold">{equipment[0].fields.title}</h2>
+                            <p class="subtitle mt-2"><span className="tags has-addons">
+                                <span className='tag is-medium has-addon has-background-success has-text-white'>$</span>
+                                <span className="tag is-medium">{formatter.format(equipment[0].fields.price)}</span>
+                            </span></p>
                             <div className="column is-centered more-info-content-active">
                                 <table className="table is-fullwidth table-trans is-size-6">
                                     <tr>
@@ -91,27 +74,43 @@ function EquipmentPage({ equipment }) {
                                         <td>{formatter.format(equipment[0].fields.price)}</td>
                                     </tr>
                                 </table>
-                                <table className="table is-fullwidth table-trans is-size-6">
-                                    <tr>
-                                        <th width="10%" align="left" className="is-size-6 ">Daily</th>
-                                        <th width="10%" align="left" className="is-size-6 ">Weekly</th>
-                                        <th width="20%" align="left" className="is-size-6 ">Monthly</th>
-                                    </tr>
-                                    <tr>
-                                        <td></td>
-                                        <td>{formatter.format(equipment[0].fields.weeklyRate)}</td>
-                                        <td>{formatter.format(equipment[0].fields.monthlyRate)}</td>
-                                    </tr>
-                                </table>
-                                <p className="is-size-6 ">{equipment[0].fields.description}</p>
                             </div>
-
+                            <p class="subtitle mt-3">{equipment[0].fields.description}</p>
+                            <section>
+                                <div className="container">
+                                    <div className="column is-size-6" style={{'textAlign':'center'}}>
+                                        <strong>Rental Rates</strong>
+                                    </div>
+                                </div>
+                            </section>
+                            <table class="table is-fullwidth">
+                                <tbody>
+                                    <tr>
+                                        <td>Daily Rates</td>
+                                        <td class="has-text-right">{formatter.format(equipment[0].fields.weeklyRate)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Weekly</td>
+                                        <td class="has-text-right">{formatter.format(equipment[0].fields.weeklyRate)}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Monthly</td>
+                                        <td class="has-text-right">{formatter.format(equipment[0].fields.motnhlyRate)}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="column is-6-desktop">
+                            <div className="columns">
+                                <div className="container">
+                                    <div className="column"><img src={getImageUrl(equipment[0])} className="image pt-5" width="500" height="auto"></img></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-            </div>
-        </section>
-        </>
+                </div>
+            </section>
+        </div>
     )
 }
 

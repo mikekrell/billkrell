@@ -48,20 +48,17 @@ function MyApp({ Component, pageProps }) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
     </Head>
 
-      <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-        <div className="navbar-brand">
-          <a className="navbar-item">
-            <img alt="nav-logo" src="Feenaughty_360x.png" className="image is-16x9" ></img>
-          </a>
-        </div>
-
-        <div id="navbarBasicExample" className={menu ? "navbar-menu is-active" : "navbar-menu"} >
+      <nav className="navbar is-fixed-top has-background-light"  role="navigation" aria-label="main navigation">
+        <div id="navbarBasicExample" className="navbar-menu" >
+          <div className="navbar-brand">
+            <a className="navbar-item ml-5">
+              <img alt="nav-logo" src="/billkrell_logo.png" className="image"></img>
+            </a>
+          </div>
           <div className="navbar-start">
+
           </div>
           <div className="navbar-end">
-            <div className="navbar-item">
-              <h2 className="subtitle"><strong className="has-text-success">Bill Krell:</strong> (503)956-3956</h2>
-            </div>
           </div>
         </div>
       </nav>
