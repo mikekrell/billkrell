@@ -39,7 +39,7 @@ function EquipmentCard({ equip, swipeLeft }){
 
     return (
 
-            <div className="card p-3"  onMouseEnter={onMouseEnterEvent} onMouseOut={onMouseOutEvent}>
+            <div className="card p-3 image-card"  onMouseEnter={onMouseEnterEvent} onMouseOut={onMouseOutEvent}>
                     <span className="image-title">
                         <p className="is-size-5 has-text-white image-manufacture-title"><span className="has-text-weight-bold">{equip.fields.year}</span> {equip.fields.manufacture}</p>
                         <h1 className="is-size-2 has-text-white has-text-weight-bold">{equip.fields.title}</h1>

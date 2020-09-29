@@ -208,3 +208,7 @@ a {
     animation-name: fade-in;
 }
 
+.image-card {
+  min-width: 400px;
+  min-height: 500px;
+}
