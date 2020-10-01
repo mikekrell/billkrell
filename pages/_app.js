@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 import '../public/globals.css'
 import "toastify-js/src/toastify.css"
 import 'bulma'
@@ -68,7 +69,11 @@ function MyApp({ Component, pageProps }) {
       <nav className="navbar is-fixed-top has-background-light"  role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
             <a className="navbar-item ml-5">
-              <img alt="nav-logo" src="/billkrell_logo.png" className="image"></img>
+              <Link href="/">
+              <a>
+                <img alt="nav-logo" src="/billkrell_logo.png" className="image"></img>
+              </a>
+              </Link>
             </a>
           </div>
           <div className="navbar-start">
