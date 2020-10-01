@@ -114,24 +114,21 @@ export default function Newsletter({ children, pageTitle, description, ...props 
                             <div className="column has-text-centered">
                             <button disabled={loading} type="submit" style={{ "width": "100%" }} className="button is-warning is-large">{!loading ? `Yes, Sign Me Up!` : `Loading...`}</button>
                             </div>
-                            
                         </form>
-                        
                     </div></>
                     :<>
                     <div className="hero-head pt-5 mt-5">
                         <div className="column">
                             <h1 className="title mt-5">Thank you for joining the newsletter.</h1>
-                            <h2 className="subtitle mt-1">Only one step left to go!</h2>
-                            <p className="pr-5">Please be sure to check your email and click the link in the email I just sent. That will make sure you always get my emails by opting in.</p>
-                        </div> 
-                    </div> 
+                            <h2 className="subtitle mt-1">You will be hearing from me soon!</h2>
+                            <p className="pr-5">Be sure to check your inbox, and keep an eye out for the weekly email. I really apreaciate it.</p>
+                        </div>
+                    </div>
                     <div className="hero-body pt-0">
                         <div className="column has-text-centered">
-                        <Link href="/used" as="/used">
-                            <a href="" ><button style={{ "width": "100%" }} className="button is-warning is-large">See the inventory</button></a>
+                        <Link href="/">
+                            <a><button style={{ "width": "100%" }} className="button is-warning is-large">See the inventory</button></a>
                         </Link>
-                            
                         </div>
                     </div></>
                     }
