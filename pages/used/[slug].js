@@ -108,16 +108,12 @@ function EquipmentPage({ equipment }) {
                             <table className="table is-fullwidth">
                                 <tbody>
                                     <tr>
-                                        <td>Daily Rates</td>
-                                        <td className="has-text-right">{formatter.format(equipment[0].fields.weeklyRate)}</td>
-                                    </tr>
-                                    <tr>
                                         <td>Weekly</td>
                                         <td className="has-text-right">{formatter.format(equipment[0].fields.weeklyRate)}</td>
                                     </tr>
                                     <tr>
                                         <td>Monthly</td>
-                                        <td className="has-text-right">{formatter.format(equipment[0].fields.motnhlyRate)}</td>
+                                        <td className="has-text-right">{formatter.format(equipment[0].fields.monthlyRate)}</td>
                                     </tr>
                                 </tbody>
                             </table>
