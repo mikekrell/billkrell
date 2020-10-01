@@ -125,18 +125,18 @@ function EquipmentPage({ equipment }) {
                         <div className="column is-6-desktop">
                             <div className="columns">
                                 <div className="container">
-                                    <div className="column" style={{'width' : '500px'}}>
+                                    <div className="column" style={{'width' : '400px'}}>
                                             {equipment[0].fields.media ?
                                                 <Slider ref={sliderRef} autoplay={false} {...slideshowSettings}>
                                                     {
                                                         equipment[0].fields.media.map((image, i) => (
                                                             <div>
-                                                                <img key={image.fields.file.url} src={image.fields.file.url} className="image" width="500" height="auto"></img>
+                                                                <img key={image.fields.file.url} src={image.fields.file.url} className="image" width="400" height="auto"></img>
                                                             </div>
                                                         ))
                                                     }
                                                 </Slider>
-                                                : <img src="nopreview.jpg" className="image" width="500" height="auto"></img>}
+                                                : <img src="nopreview.jpg" className="image" width="400" height="auto"></img>}
                                         {/* <img src={getImageUrl(equipment[0])} className="image pt-5" width="500" height="auto"></img> */}
                                         </div>
                                 </div>
