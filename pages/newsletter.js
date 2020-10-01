@@ -11,11 +11,12 @@ export default function Newsletter({ children, pageTitle, description, ...props 
     const emailAddress = useRef(null)
     const phoneNumber = useRef(null)
     const companyName = useRef(null)
-
+    
     useEffect(()=>{
-        console.log(router.query.email)
+        if (router.query.email) {
+            emailAddress.current.value = (router.query.email)
+        }
     }, [])
-
     const submitForm = async (event) => {
         event.preventDefault();
         fetch('/api/subscribe', { method: "POST", body: JSON.stringify({ firstName: firstName.current.value, lastName: lastName.current.value, emailAddress: emailAddress.current.value, phoneNumber: phoneNumber.current.value, companyName: companyName.current.value }) }).then(data => {
@@ -93,7 +94,7 @@ export default function Newsletter({ children, pageTitle, description, ...props 
                             </div>
                             <div className="field">
                                 <div className="control has-icons-left has-icons-right">
-                                        <input className="input is-medium" value={router.query.email} type="email" placeholder="Email Address" ref={emailAddress} />
+                                        <input className="input is-medium" type="email" placeholder="Email Address" ref={emailAddress} />
                                     <span className="icon is-left">
                                         <i className="fa fa-envelope fa-sm"></i>
                                     </span>
