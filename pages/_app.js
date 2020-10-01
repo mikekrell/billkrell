@@ -11,9 +11,11 @@ import {useScroll} from '../hooks/useScroll'
 import {useState, useEffect} from 'react'
 import Subscribe from '../components/Subscribe'
 import Router from 'next/router'
+import {useRouter} from 'next/router'
 
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
   const size = useWindowSize();
   let scroll = null;
   if (typeof window !== 'undefined') {
@@ -39,6 +41,7 @@ function MyApp({ Component, pageProps }) {
       Router.events.off("routeChangeComplete", end);
       Router.events.off("routeChangeError", end);
     }
+
   })
 
   useEffect(()=>{
@@ -99,8 +102,8 @@ function MyApp({ Component, pageProps }) {
           </a>}
         </div>
       </div>
-
-      <Subscribe></Subscribe>
+      {router.pathname == '/newsletter' ? null : <Subscribe></Subscribe>}
+      
     </>
   )
 }

@@ -1,13 +1,19 @@
-import {useRef} from 'react'
+import {useEffect, useRef, useState} from 'react'
+import Link from 'next/link'
 
 function Subscribe () {
+    const [emailAddress, setEmailAddress] = useState('')
+
     const subscriptionEvent = async () => {
         fetch('/api/subscribe', { method: "POST", body: JSON.stringify({ email: emailInput.current.value })} ).then(data=>{ 
             console.log(data)
          })
     }
 
-    const emailInput = useRef(null);
+    const handleEmailChange = (e) =>{
+        setEmailAddress(e.target.value)
+    }
+
     return (
         <section className="section has-background-dark">
             <div className="columns">
@@ -19,12 +25,14 @@ function Subscribe () {
                     </div>
                     <div className="field is-grouped">
                         <p className="control is-expanded">
-                            <input ref={emailInput} className="input" type="text" placeholder="Enter your email" />
+                            <input value={emailAddress} onChange={handleEmailChange} className="input" type="email" placeholder="Enter your email" />
                         </p>
                         <p className="control">
-                            <a onClick={subscriptionEvent} className="button is-warning">
-                                Subscribe
-                            </a>
+                            <Link href={`/newsletter?email=${emailAddress}`}>
+                                <a className="button is-warning">
+                                    Subscribe
+                                </a>
+                            </Link>
                         </p>
                     </div>
                 </div>

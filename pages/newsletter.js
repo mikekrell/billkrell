@@ -1,9 +1,9 @@
-import React, { useState, useRef} from 'react';
+import React, { useState, useRef, useEffect} from 'react';
 import {useRouter} from 'next/router'
 import Head from 'next/head'
 import Link from 'next/link'
 export default function Newsletter({ children, pageTitle, description, ...props }) {
-    
+    const router = useRouter();
     const [success, setSuccess] = useState(false)
     const [loading, setLoading] = useState(false)
     const firstName = useRef(null)
@@ -11,6 +11,10 @@ export default function Newsletter({ children, pageTitle, description, ...props 
     const emailAddress = useRef(null)
     const phoneNumber = useRef(null)
     const companyName = useRef(null)
+
+    useEffect(()=>{
+        console.log(router.query.email)
+    }, [])
 
     const submitForm = async (event) => {
         event.preventDefault();
@@ -89,7 +93,7 @@ export default function Newsletter({ children, pageTitle, description, ...props 
                             </div>
                             <div className="field">
                                 <div className="control has-icons-left has-icons-right">
-                                    <input className="input is-medium" type="email" placeholder="Email Address" ref={emailAddress} />
+                                        <input className="input is-medium" value={router.query.email} type="email" placeholder="Email Address" ref={emailAddress} />
                                     <span className="icon is-left">
                                         <i className="fa fa-envelope fa-sm"></i>
                                     </span>
@@ -160,4 +164,4 @@ export default function Newsletter({ children, pageTitle, description, ...props 
             </div>
         </>
     )
-} 
+}
