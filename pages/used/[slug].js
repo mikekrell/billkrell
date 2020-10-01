@@ -2,6 +2,8 @@ import Link from 'next/link'
 import Head from 'next/head'
 import Slider from 'react-slick';
 import { useEffect, useRef } from 'react'
+import { faPhone } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 var contentful = require('contentful');
 
 function EquipmentPage({ equipment }) {
@@ -79,10 +81,19 @@ function EquipmentPage({ equipment }) {
                         <div className="column is-6-desktop">
                             <p className="is-size-5 image-manufacture-title"><span className="has-text-weight-bold">{equipment[0].fields.year}</span> {equipment[0].fields.manufacture}</p>
                             <h2 className="is-size-2 has-text-weight-bold">{equipment[0].fields.title}</h2>
-                            <p className="subtitle mt-2"><span className="tags has-addons">
-                                <span className='tag is-medium has-addon has-background-success has-text-white'>$</span>
-                                <span className="tag is-medium">{formatter.format(equipment[0].fields.price)}</span>
-                            </span></p>
+                            <p className="subtitle mt-2">
+                                {equipment[0].fields.price == 0 ?
+                                        <span className="tags has-addons">
+                                            <span className='tag is-medium has-addon has-background-warning'><FontAwesomeIcon className="icon is-small" icon={faPhone} /></span>
+                                            <span className='tag is-medium'>
+                                                Call Me
+                                            </span>
+                                        </span>
+                                        : <span className="tags has-addons">
+                                            <span className='tag is-medium has-addon has-background-success has-text-white'>$</span>
+                                            <span className="tag is-medium">{formatter.format(equipment[0].fields.price)}</span>
+                                        </span>}
+                            </p>
                             <div className="column is-centered more-info-content-active">
                                 <table className="table is-fullwidth table-trans is-size-6">
                                     <tr>
