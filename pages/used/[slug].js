@@ -1,19 +1,17 @@
 import Link from 'next/link'
 import Head from 'next/head'
+import Slider from 'react-slick';
 import { useEffect, useRef } from 'react'
 var contentful = require('contentful');
 
 function EquipmentPage({ equipment }) {
 
     const slideshowSettings = {
-        dots: false,
+        dots: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1,
-        speed: 2000,
-        autoplaySpeed: 1750,
         cssEase: "ease-in",
-        pauseOnHover: true,
         swipeToSlide: true,
     };
 
@@ -127,7 +125,20 @@ function EquipmentPage({ equipment }) {
                         <div className="column is-6-desktop">
                             <div className="columns">
                                 <div className="container">
-                                    <div className="column"><img src={getImageUrl(equipment[0])} className="image pt-5" width="500" height="auto"></img></div>
+                                    <div className="column" style={{'width' : '500px'}}>
+                                            {equipment[0].fields.media ?
+                                                <Slider ref={sliderRef} autoplay={false} {...slideshowSettings}>
+                                                    {
+                                                        equipment[0].fields.media.map((image, i) => (
+                                                            <div>
+                                                                <img key={image.fields.file.url} src={image.fields.file.url} className="image" width="500" height="auto"></img>
+                                                            </div>
+                                                        ))
+                                                    }
+                                                </Slider>
+                                                : <img src="nopreview.jpg" className="image" width="500" height="auto"></img>}
+                                        {/* <img src={getImageUrl(equipment[0])} className="image pt-5" width="500" height="auto"></img> */}
+                                        </div>
                                 </div>
                             </div>
                         </div>
