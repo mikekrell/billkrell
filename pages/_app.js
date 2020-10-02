@@ -12,6 +12,7 @@ import {useState, useEffect} from 'react'
 import Subscribe from '../components/Subscribe'
 import Router from 'next/router'
 import {useRouter} from 'next/router'
+import { GTMPageView } from '../utils/GTM';
 
 
 function MyApp({ Component, pageProps }) {
@@ -26,23 +27,23 @@ function MyApp({ Component, pageProps }) {
   const [atBottom, setAtBottom] = useState(false)
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
-    const start = () => {
-      setLoading(true);
-    };
-    const end = () => {
-      setLoading(false);
-    };
-      Router.events.on("routeChangeStart", start);
-      Router.events.on("routeChangeComplete", end);
-      Router.events.on("routeChangeError", end);
-    return () => {
-      Router.events.off("routeChangeStart", start);
-      Router.events.off("routeChangeComplete", end);
-      Router.events.off("routeChangeError", end);
-    }
+  // useEffect(() => {
+  //   const start = () => {
+  //     setLoading(true);
+  //   };
+  //   const end = () => {
+  //     setLoading(false);
+  //   };
+  //     Router.events.on("routeChangeStart", start);
+  //     Router.events.on("routeChangeComplete", end);
+  //     Router.events.on("routeChangeError", end);
+  //   return () => {
+  //     Router.events.off("routeChangeStart", start);
+  //     Router.events.off("routeChangeComplete", end);
+  //     Router.events.off("routeChangeError", end);
+  //   }
 
-  })
+  // })
 
   useEffect(()=>{
     setInterval(()=>{
@@ -51,6 +52,13 @@ function MyApp({ Component, pageProps }) {
         setInt(false)
       },1000)
     }, 8000)
+
+    const handleRouteChange = (url) => GTMPageView(url);
+
+    Router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      Router.events.off('routeChangeComplete', handleRouteChange);
+    };
   }, [])
 
   useEffect(()=>{
@@ -68,6 +76,20 @@ function MyApp({ Component, pageProps }) {
     <Head>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179469392-1"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-PJSCN7S')
+                `,
+          }}
+        />
+        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJSCN7S"
+          height="0" width="0" style={{"display":"none","visibility":"hidden"}}></iframe></noscript>
     </Head>
       <nav className="navbar is-fixed-top has-background-light"  role="navigation" aria-label="main navigation">
           <div className="navbar-brand">

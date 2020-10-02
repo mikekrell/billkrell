@@ -56,18 +56,7 @@ export default function Newsletter({ children, pageTitle, description, ...props 
                     <meta property="og:title" content="Subscribe to my newsletter" key="ogtitle" />
                     <meta property="og:description" content="Be the first to be notified about the latest used equipment available for purchase. You’ll also get access to my weekly newsletter where you’ll see what sold last week and what’s new, as well as industry info." key="ogdesc" />
                     <link rel="icon" href="/favicon.ico" />
-                    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179469392-1"></script>
-                    <script
-                        dangerouslySetInnerHTML={{
-                            __html: `
-                    window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments);}
-                    gtag('js', new Date());
 
-                    gtag('config', 'UA-179469392-1');
-                `,
-                        }}
-                    />
             </Head>
             <div className="columns">
                 <div className="column bg-img">
