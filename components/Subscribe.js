@@ -37,7 +37,7 @@ function Subscribe () {
                         <p className="control">
                                 <Link href={`/newsletter?email=${emailAddress.current?.value}`}>
                                 <a className="button is-warning">
-                                    Subscribe
+                                    Join Now
                                 </a>
                             </Link>
                         </p>
