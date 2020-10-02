@@ -55,8 +55,8 @@ function EquipmentCard({ equip, swipeLeft }){
                                 <tr>
                                 <td>{equip.fields.hours !== NaN  ? equip.fields.hours : "N/A" }</td>
                                 <td>{equip.fields.weight !== NaN && equip.fields.weight !== 0 ? equip.fields.weight : "N/A"}</td>
-                                <td>{equip.fields.weeklyRate !== 0 || equip.fields.weeklyRate == NaN ? formatter.format(equip.fields.weeklyRate) : "N/A"}</td>
-                                <td>{equip.fields.monthlyRate !== 0 || equip.fields.monthlyRate == NaN ? formatter.format(equip.fields.monthlyRate) : "N/A"}</td>
+                                <td>{equip.fields.weeklyRate !== 0 && equip.fields.weeklyRate == NaN ? formatter.format(equip.fields.weeklyRate) : "N/A"}</td>
+                                <td>{equip.fields.monthlyRate !== 0 && equip.fields.monthlyRate == NaN ? formatter.format(equip.fields.monthlyRate) : "N/A"}</td>
                                 </tr>
                             </table>
                             <p className="is-size-6 has-text-white ">{equip.fields.description}</p>
