@@ -87,9 +87,9 @@ function MyApp({ Component, pageProps }) {
                 `,
           }}
         />
+        <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJSCN7S" height="0" width="0" style="display:none;visibility:hidden;"></iframe>` }} />
     </Head>
-      <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJSCN7S"
-        height="0" width="0" style={{ "display": "none", "visibility": "hidden" }}></iframe></noscript>
+      
       <nav className="navbar is-fixed-top has-background-light"  role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
             <a className="navbar-item ml-5">
