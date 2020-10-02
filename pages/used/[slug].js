@@ -46,8 +46,6 @@ function EquipmentPage({ equipment }) {
                 <meta property="og:image" content={getImageUrl(equipment[0])} />
                 <meta property="og:description" content={equipment[0].fields.description} />
                 <link rel="icon" href="/favicon.ico" />
-                
-
             </Head>
             <script type="application/ld+json">
                 {`{

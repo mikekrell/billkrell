@@ -76,7 +76,6 @@ function MyApp({ Component, pageProps }) {
     <Head>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179469392-1"></script>
         <script
           dangerouslySetInnerHTML={{
             __html: `
