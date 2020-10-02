@@ -84,11 +84,12 @@ function MyApp({ Component, pageProps }) {
               j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
               'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
               })(window,document,'script','dataLayer','GTM-PJSCN7S')
+              <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJSCN7S"
+          height="0" width="0" style={{"display":"none","visibility":"hidden"}}></iframe></noscript>
                 `,
           }}
         />
-        <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJSCN7S"
-          height="0" width="0" style={{"display":"none","visibility":"hidden"}}></iframe></noscript>
+        
     </Head>
       <nav className="navbar is-fixed-top has-background-light"  role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
