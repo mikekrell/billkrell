@@ -102,9 +102,9 @@ function EquipmentPage({ equipment }) {
                                         <th width="20%" align="left" className="is-size-6 ">Price</th>
                                     </tr>
                                     <tr>
-                                        <td>{equipment[0].fields.hours}</td>
-                                        <td>{equipment[0].fields.weight}</td>
-                                        <td>{formatter.format(equipment[0].fields.price)}</td>
+                                        <td>{equipment[0].fields.hours !== NaN ? equipment[0].fields.hours : "N/A" }</td>
+                                            <td>{equipment[0].fields.weight !== NaN && equipment[0].fields.weight !== 0 ? equipment[0].fields.weight : "N/A" }</td>
+                                            <td>{equipment[0].fields.price !== NaN && equipment[0].fields.price !== 0 ?  formatter.format(equipment[0].fields.price): "N/A"}</td>
                                     </tr>
                                 </table>
                             </div>
@@ -120,11 +120,11 @@ function EquipmentPage({ equipment }) {
                                 <tbody>
                                     <tr>
                                         <td>Weekly</td>
-                                        <td className="has-text-right">{formatter.format(equipment[0].fields.weeklyRate)}</td>
+                                            <td className="has-text-right">{ equipment[0].fields.weeklyRate !== NaN && equipment[0].fields.weeklyRate !== 0 ? formatter.format(equipment[0].fields.weeklyRate) : "N/A"}</td>
                                     </tr>
                                     <tr>
                                         <td>Monthly</td>
-                                        <td className="has-text-right">{formatter.format(equipment[0].fields.monthlyRate)}</td>
+                                            <td className="has-text-right">{equipment[0].fields.monthlyRate !== NaN && equipment[0].fields.monthlyRate !== 0 ? formatter.format(equipment[0].fields.monthlyRate) : "N/A"}</td>
                                     </tr>
                                 </tbody>
                             </table>
