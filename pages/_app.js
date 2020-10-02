@@ -68,18 +68,6 @@ function MyApp({ Component, pageProps }) {
     <Head>
         <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css"/>
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179469392-1"></script>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-
-                gtag('config', 'UA-179469392-1');
-              `,
-          }}
-        />
     </Head>
       <nav className="navbar is-fixed-top has-background-light"  role="navigation" aria-label="main navigation">
           <div className="navbar-brand">

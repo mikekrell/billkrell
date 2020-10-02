@@ -47,7 +47,18 @@ function Home({ equipment, loading } ){
                     <meta property="og:description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." key="ogdesc" />
                     <meta property="og:image" content="/billkrell_logo.png" />
                     <link rel="icon" href="/favicon.ico" />
+                    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179469392-1"></script>
+                    <script
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    gtag('js', new Date());
 
+                    gtag('config', 'UA-179469392-1');
+                `,
+                        }}
+                    />
                 </Head>
             
             <Modal style={{

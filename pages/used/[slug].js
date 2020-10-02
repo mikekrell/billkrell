@@ -46,6 +46,18 @@ function EquipmentPage({ equipment }) {
                 <meta property="og:image" content={getImageUrl(equipment[0])} />
                 <meta property="og:description" content={equipment[0].fields.description} />
                 <link rel="icon" href="/favicon.ico" />
+                <script async src="https://www.googletagmanager.com/gtag/js?id=UA-179469392-1"></script>
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+
+                gtag('config', 'UA-179469392-1');
+              `,
+                    }}
+                />
 
             </Head>
             <script type="application/ld+json">
