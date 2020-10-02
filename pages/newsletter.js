@@ -58,11 +58,14 @@ export default function Newsletter({ children, pageTitle, description, ...props 
                     <link rel="icon" href="/favicon.ico" />
                     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GHN76ZVXQF"></script>
                     <script>
-                        window.dataLayer = window.dataLayer || [];
-                    function gtag(){dataLayer.push(arguments)}
-                    gtag('js', new Date());
-
-                    gtag('config', 'G-GHN76ZVXQF');
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            window.dataLayer = window.dataLayer || [];
+                            function gtag(){dataLayer.push(arguments);}
+                            gtag('js', new Date());
+                            gtag('config', 'G-GHN76ZVXQF');
+                        `,
+                    }}
                     </script>
             </Head>
             <div className="columns">
