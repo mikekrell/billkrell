@@ -45,7 +45,6 @@ function Home({ equipment, loading } ){
                     <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
                     <meta property="og:title" content="Used Inventory - Bill Krell / Feenaughty" key="ogtitle" />
                     <meta property="og:description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." key="ogdesc" />
-                    <meta property="og:image" content="/billkrell_logo.png" />
                     <link rel="icon" href="/favicon.ico" />
 
                 </Head>

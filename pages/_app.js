@@ -12,8 +12,6 @@ import {useState, useEffect} from 'react'
 import Subscribe from '../components/Subscribe'
 import Router from 'next/router'
 import {useRouter} from 'next/router'
-import { GTMPageView } from '../utils/GTM';
-
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
@@ -52,13 +50,6 @@ function MyApp({ Component, pageProps }) {
         setInt(false)
       },1000)
     }, 8000)
-
-    const handleRouteChange = (url) => GTMPageView(url);
-
-    Router.events.on('routeChangeComplete', handleRouteChange);
-    return () => {
-      Router.events.off('routeChangeComplete', handleRouteChange);
-    };
   }, [])
 
   useEffect(()=>{
