@@ -85,7 +85,7 @@ function MyApp({ Component, pageProps }) {
             <a className="navbar-item ml-5">
               <Link href="/">
               <a>
-                <img alt="nav-logo" src="/billkrell_logo.png" className="image"></img>
+                <img alt="nav-logo" src="/billkrell_logo.png" height="50px" className="image"></img>
               </a>
               </Link>
             </a>
