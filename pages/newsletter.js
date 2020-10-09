@@ -51,10 +51,11 @@ export default function Newsletter({ children, pageTitle, description, ...props 
                     <meta charSet="utf-8" />
                     <meta name="description" content="Be the first to be notified about the latest used equipment available for purchase. You’ll also get access to my weekly newsletter where you’ll see what sold last week and what’s new, as well as industry info." />
 
-                    <meta property="og:url" content="http://www.billkrell.com/subscribe_to_newsletter.html" key="ogurl" />
+                    <meta property="og:url" content="http://www.billkrell.com/newsletter.html" key="ogurl" />
                     <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
                     <meta property="og:title" content="Subscribe to my newsletter" key="ogtitle" />
                     <meta property="og:description" content="Be the first to be notified about the latest used equipment available for purchase. You’ll also get access to my weekly newsletter where you’ll see what sold last week and what’s new, as well as industry info." key="ogdesc" />
+                <meta property="og:image" content="https://billkrell.com/_next/static/media/doosan_bg_img.10043fe2d53a37d03963cf328a9520cb.jpg" />
                     <link rel="icon" href="/favicon.ico" />
 
             </Head>
