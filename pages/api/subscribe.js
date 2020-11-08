@@ -2,7 +2,7 @@
 import mailchimp from "@mailchimp/mailchimp_marketing";
 export default async (req, res) => {
 
-  if (req.method === "POST") {
+  if (req.method === "PUT") {
     //const listId = "1066117";
     const customer = JSON.parse(req.body)
 

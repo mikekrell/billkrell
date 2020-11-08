@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }) {
   }, [scroll?.scrollY])
 
   const subscriptionEvent = async () => {
-    fetch('/api/subscribe', { method: "POST", body: JSON.stringify({ email: emailInput.current.value }) }).then(data => {
+    fetch('/api/subscribe', { method: "PUT", body: JSON.stringify({ email: emailInput.current.value }) }).then(data => {
       setPayWall(false)
     })
   }

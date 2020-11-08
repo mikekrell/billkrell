@@ -19,7 +19,7 @@ export default function Newsletter({ children, pageTitle, description, ...props 
     }, [])
     const submitForm = async (event) => {
         event.preventDefault();
-        fetch('/api/subscribe', { method: "POST", body: JSON.stringify({ firstName: firstName.current.value, lastName: lastName.current.value, emailAddress: emailAddress.current.value, phoneNumber: phoneNumber.current.value, companyName: companyName.current.value }) }).then(data => {
+        fetch('/api/subscribe', { method: "PUT", body: JSON.stringify({ firstName: firstName.current.value, lastName: lastName.current.value, emailAddress: emailAddress.current.value, phoneNumber: phoneNumber.current.value, companyName: companyName.current.value }) }).then(data => {
             if (data.status == 200) {
                 setSuccess(true)
             }else {
