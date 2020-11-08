@@ -51,7 +51,7 @@ function MyApp({ Component, pageProps }) {
     if (!!router.query.rel) {
       setTimeout(() => {
         setPayWall(true)
-      }, 2500)
+      }, 3500)
     }
 
     //set pulse of button (setInterval keeps pulse, setTimeout sets delay)
