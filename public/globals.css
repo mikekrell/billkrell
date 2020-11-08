@@ -194,21 +194,39 @@ a {
 }
 
 @keyframes fade-in {
-    from { opacity: 0 }
-      to { opacity: 1 }
-}
+    0% { 
+      opacity: 0;
+    }
 
-#fader.fade-out {
-    opacity: 0;
-    animation-name: fade-out;
-}
-
-#fader.fade-in {
-    opacity: 1;
-    animation-name: fade-in;
+    100% { 
+      opacity: 1;
+    }
 }
 
 .image-card {
   min-width: 325px;
   min-height: 500px;
+}
+
+.newsetter-signup {
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.75);
+  z-index: 101;
+  animation: fade-in 1s;
+}
+
+.newsetter-signup > .card{
+  width: 500px;
+  align-self: center;
+}
+
+.footer-button {
+  cursor: pointer;
 }

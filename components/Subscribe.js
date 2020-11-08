@@ -23,7 +23,6 @@ function Subscribe () {
     return (
         <section className="section has-background-dark">
             <div className="columns">
-                <div className="column is-one-quarter"></div>
                 <div className="column">
                     <div className="title has-text-centered ">
                         <h2 className="has-text-white">Subscribe to the Newsletter!</h2>
@@ -34,17 +33,9 @@ function Subscribe () {
                         <p className="control is-expanded">
                             <input ref={emailAddress} className="input" type="email" placeholder="Enter your email" />
                         </p>
-                        <p className="control">
-                                <Link href={`/newsletter?email=${emailAddress.current?.value}`}>
-                                <a className="button is-warning">
-                                    Join Now
-                                </a>
-                            </Link>
-                        </p>
                     </div>
                     </form>
                 </div>
-                <div className="column is-one-quarter"></div>
             </div>
         </section>
     )

@@ -1,5 +1,6 @@
 import Slider from 'react-slick';
 import {useEffect, useRef} from 'react'
+import ContentfulImage from '@moxy/react-contentful-image';
 
 function ImageSlider({ media, slideshow, swipeLeft, slideIndex, equip }) {
 
@@ -58,7 +59,7 @@ function ImageSlider({ media, slideshow, swipeLeft, slideIndex, equip }) {
                 {
                     media.map((image, i) => (
                         <div>
-                            <img key={image.fields.file.url} src={getImageUrl(image)} className="image" width="200" height="auto"></img>
+                            <ContentfulImage key={image.fields.file.url} image={getImageUrl(image)} className="image" format="jpeg" width="200" height="auto" resize={{width: 200}}></ContentfulImage>
                         </div>
                     ))
                 }

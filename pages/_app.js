@@ -8,13 +8,15 @@ import "slick-carousel/slick/slick-theme.css";
 import 'pure-react-carousel/dist/react-carousel.es.css';
 import useWindowSize from '../hooks/use-window-size';
 import {useScroll} from '../hooks/useScroll'
-import {useState, useEffect} from 'react'
+import {useState, useEffect, useRef} from 'react'
 import Subscribe from '../components/Subscribe'
 import Router from 'next/router'
+import Modal from 'react-modal';
 import {useRouter} from 'next/router'
 
 function MyApp({ Component, pageProps }) {
   const router = useRouter();
+  const emailInput = useRef(null)
   const size = useWindowSize();
   let scroll = null;
   if (typeof window !== 'undefined') {
@@ -24,6 +26,7 @@ function MyApp({ Component, pageProps }) {
   const [int, setInt] = useState(false)
   const [atBottom, setAtBottom] = useState(false)
   const [loading, setLoading] = useState(false);
+  const [payWall, setPayWall] = useState(false);
 
   // useEffect(() => {
   //   const start = () => {
@@ -44,6 +47,14 @@ function MyApp({ Component, pageProps }) {
   // })
 
   useEffect(()=>{
+    //start for animation paywall
+    if (!!router.query.rel) {
+      setTimeout(() => {
+        setPayWall(true)
+      }, 2500)
+    }
+
+    //set pulse of button (setInterval keeps pulse, setTimeout sets delay)
     setInterval(()=>{
       setInt(true)
       setTimeout(()=>{
@@ -62,6 +73,13 @@ function MyApp({ Component, pageProps }) {
     }
   }, [scroll?.scrollY])
 
+  const subscriptionEvent = async () => {
+    fetch('/api/subscribe', { method: "POST", body: JSON.stringify({ email: emailInput.current.value }) }).then(data => {
+      setPayWall(false)
+    })
+  }
+
+  
   return (
     <>
     <Head>
@@ -80,6 +98,42 @@ function MyApp({ Component, pageProps }) {
         />
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJSCN7S" height="0" width="0" style="display:none;visibility:hidden;"></iframe>` }} />
     </Head>
+      {payWall ? 
+      <div className="newsetter-signup">
+          <div className="card">
+            <div className="card-content">
+              <section className="section has-background-dark">
+                <div className="columns">
+                  <div className="column">
+                    <div className="title has-text-centered ">
+                      <h2 className="has-text-white">Subscribe to the Newsletter!</h2>
+                      <p className="subtitle has-text-white pt-1">Stay up to date with all our inventory as we receive it.</p>
+                    </div>
+
+                      <div className="field is-grouped">
+                        <p className="control is-expanded">
+                        <input ref={emailInput} className="input" type="email" placeholder="Enter your email" />
+                        </p>
+                      </div>
+
+                  </div>
+                </div>
+              </section>
+            </div>
+            <footer className="card-footer">
+              <p onClick={() => setPayWall(false)}className="card-footer-item footer-button">
+                <span>
+                  Not right now
+                </span>
+              </p>
+              <p onClick={subscriptionEvent} className="card-footer-item has-background-success-dark has-text-white footer-button">
+                <span>
+                  Subscribe
+                </span>
+              </p>
+            </footer>
+          </div>
+      </div> : null }
       <nav className="navbar is-fixed-top has-background-light"  role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
             <a className="navbar-item ml-5">
@@ -113,8 +167,6 @@ function MyApp({ Component, pageProps }) {
           </a>}
         </div>
       </div>
-      {router.pathname == '/newsletter' ? null : <Subscribe></Subscribe>}
-      
     </>
   )
 }

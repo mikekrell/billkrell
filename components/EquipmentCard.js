@@ -3,6 +3,7 @@ import { faImage, faChevronDown, faChevronUp, faPhone } from '@fortawesome/free-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import ImageSlider from './ImageSlider';
 
+
 function EquipmentCard({ equip, swipeLeft }){
     const [showContent, setShowContent] = useState(false)
     const [slideshow, setSlideshow] = useState(false)

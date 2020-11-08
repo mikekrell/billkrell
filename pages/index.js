@@ -4,10 +4,7 @@ import {useRouter} from 'next/router'
 import Head from 'next/head'
 import EquipmentCard from '../components/EquipmentCard'
 import useWindowSize from '../hooks/use-window-size';
-import Modal from 'react-modal';
 import EquipmentPage from './used/[slug]'
-
-Modal.setAppElement("#__next");
 
 var contentful = require('contentful');
 
@@ -24,7 +21,6 @@ function Home({ equipment, loading } ){
 
     useEffect(() => { 
         if (size) {
-            console.log(windowSize.height, windowSize.width)
             setWindowSize({ height: size.height, width: size.width})
         }
     }, [size])
@@ -48,33 +44,6 @@ function Home({ equipment, loading } ){
                     <link rel="icon" href="/favicon.ico" />
 
                 </Head>
-            
-            <Modal style={{
-                    overlay: {
-                        position: 'fixed',
-                        top: 0,
-                        left: 0,
-                        right: 0,
-                        bottom: 0,
-                        zIndex: 999,
-                        backgroundColor: 'rgba(0, 0, 0, 0.75)'
-                    },
-                    content: {
-                        position: 'absolute',
-                        top: '100px',
-                        left: '10%',
-                        right: '10%',
-                        bottom: '100px',
-                        border: '1px solid #ccc',
-                        background: '#fff',
-                        overflow: 'auto',
-                        WebkitOverflowScrolling: 'touch',
-                        borderRadius: '4px',
-                        outline: 'none'
-                    }
-            }} isOpen={!!router.query.id} onRequestClose={()=>router.push('/')}>
-                {!!router.query.id ? <EquipmentPage equipment={equipment.filter(item => item.sys.id == router.query.id)}></EquipmentPage> : null }
-            </Modal>
                 <section className="section has-background-light mt-2">
                     <div className="container">
                         <h1 className="title mt-5">Used Inventory</h1>
