@@ -47,6 +47,10 @@ function MyApp({ Component, pageProps }) {
   // })
 
   useEffect(()=>{
+
+    document.addEventListener('keydown', (e)=>{
+      console.log(e.key)
+    })
     //start for animation paywall
     if (!!router.query.rel) {
       setTimeout(() => {
@@ -158,10 +162,9 @@ function MyApp({ Component, pageProps }) {
             <button className={int ? "button fab fab-active fab-shadow is-rounded has-background-success-dark" : "button fab fab-shadow is-rounded has-background-success-dark"}>
               <span>
                 <figure className="image is-48x48 noheight">
-                  <img className="is-rounded" src="https://media-exp1.licdn.com/dms/image/C5603AQH_6_OPXQjhfQ/profile-displayphoto-shrink_400_400/0?e=1605744000&v=beta&t=_tgK9cTp2iI2pwszZ16GTluy0PbktUrhNAj9MTGF7s4" />
+                    <img className="is-rounded" src="/billkrell_headshot.jpeg" />
                 </figure>
               </span>
-
               <span className="subtitle has-text-white has-text-weight-bold" style={{ "marginLeft": "10px", "marginRight": "10px" }}>(503)956-3956</span>
             </button>
           </a>}
