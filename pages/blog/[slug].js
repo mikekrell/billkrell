@@ -3,7 +3,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 function BlogPost ({post}) {
     return (
         <div>
-        <section className="section has-background-light mt-2">
+        <section className="section has-background-light">
             <div className="container">
                 <h1 className="title mt-5">{post[0].fields.title}</h1>
                 <span className="is-flex" style={{alignItems:'center'}}>

@@ -44,7 +44,7 @@ function Home({ equipment, loading } ){
                     <link rel="icon" href="/favicon.ico" />
 
                 </Head>
-                <section className="section has-background-light mt-2">
+                <section className="section has-background-light">
                     <div className="container">
                         <h1 className="title mt-5">Used Inventory</h1>
                         <h2 className="subtitle">

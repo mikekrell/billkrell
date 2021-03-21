@@ -10,7 +10,7 @@ function Blog({blogPosts}) {
 
     return (
         <div>
-        <section className="section has-background-light mt-2">
+        <section className="section has-background-light">
             <div className="container">
                 <h1 className="title mt-5">
                     The Blog
