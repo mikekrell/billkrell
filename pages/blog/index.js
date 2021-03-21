@@ -24,7 +24,7 @@ function Blog({blogPosts}) {
             <div className="container">
                 {blogPosts.map(post=>(
                 <div>
-                <Link href={`/blog/${post.fields.slug}`} as={`/blog/${post.fields.slug}`}><h1 className="title mt-5 mb-5 has-text-success-dark">{post.fields.title}</h1></Link>
+                <Link href={`/blog/${post.fields.slug}`} as={`/blog/${post.fields.slug}`}><a className="title mt-5 mb-5 has-text-success-dark">{post.fields.title}</a></Link>
                 <div style={{width: '100%', height: '25px', display: 'flex', alignItems: "center"}} className="mt-3">
                 <span>
                     <figure className="image is-32x32 noheight">
@@ -34,8 +34,8 @@ function Blog({blogPosts}) {
                 <p className="ml-2">Bill Krell</p>
                 <p className="ml-2 is-size-7"> - {moment(post.sys.createdAt).format('MMMM Do YYYY, h:mm a')}</p>
                 </div>
-                <div className="mt-5" dangerouslySetInnerHTML={{__html: documentToHtmlString(post.fields.blogContent)}}></div>
-                        <Link href={`/blog/${post.fields.slug}`} as={`/blog/${post.fields.slug}`}><button className="mt-5 button has-background-success-dark has-text-white">More Info</button></Link>
+                <div className="mt-5" style={{flex: "1", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}} dangerouslySetInnerHTML={{__html: documentToHtmlString(post.fields.blogContent)}}></div>
+                <Link href={`/blog/${post.fields.slug}`} as={`/blog/${post.fields.slug}`}><button className="mt-5 button has-background-success-dark has-text-white">More Info</button></Link>
                 <div style={{width: "100%", height:'2px', backgroundColor: "grey", opacity: '50%', marginTop: '50px'}}></div>
                 </div>
             ))}
