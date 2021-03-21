@@ -148,8 +148,10 @@ function MyApp({ Component, pageProps }) {
               </Link>
             </a>
           </div>
-          <div className="navbar-start">
-
+          <div className="navbar-start is-flex ml-5" style={{alignItems: 'center', justifyContent: 'center'}}>
+          <div className="ml-6 is-size-5 is-bold is-uppercase"><Link href="/"><a className="has-text-success">Used Inventory</a></Link></div>
+          <div className="ml-4 mr-2">|</div>
+          <div className="ml-3 is-size-5 is-bold is-uppercase "><Link href="/blog"><a className="has-text-success">Blog</a></Link></div>
           </div>
           <div className="navbar-end">
           </div>
