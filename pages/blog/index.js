@@ -12,9 +12,11 @@ function Blog({blogPosts}) {
         <div>
         <section className="section has-background-light mt-2">
             <div className="container">
-                <h1 className="title mt-5">The blog of Billbo.</h1>
+                <h1 className="title mt-5">
+                    The Blog
+                </h1>
                 <h2 className="subtitle">
-                    A journal of short stories, and tails of Billbo's journey into heavy machines. Hold on to your hats and buckets!
+                    A list of my content and articles.
                 </h2>
             </div>
         </section>
