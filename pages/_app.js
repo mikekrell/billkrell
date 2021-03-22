@@ -138,19 +138,19 @@ function MyApp({ Component, pageProps }) {
             </footer>
           </div>
       </div> : null }
-      <nav className="navbar is-fixed-top has-background-light container is-flex iis-align-items-center is-justify-content-space-between"  role="navigation" aria-label="main navigation">
+      <nav className="navbar is-fixed-top has-background-light container is-flex is-align-items-center is-justify-content-space-between"  role="navigation" aria-label="main navigation" style={{width: '100vw'}}>
           <div className="navbar-brand">
             <a className="navbar-item">
               <Link href="/">
               <a>
-                <img alt="nav-logo" src="/billkrell_logo.png" height="50px" className="image"></img>
+                <img alt="nav-logo" src="/billkrell_logo.png" className="image" style={{height:'20px'}}></img>
               </a>
               </Link>
             </a>
           </div>
           <div className="is-flex">
-            <div className="navbar-start is-flex ml-5" style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <div className="ml-6 is-size-5 is-bold is-uppercase"><Link href="/"><a className="has-text-success">Used Inventory</a></Link></div>
+            <div className="navbar-start is-flex" style={{ alignItems: 'center', justifyContent: 'center' }}>
+              <div className="ml-4 is-size-5 is-bold is-uppercase"><Link href="/"><a className="has-text-success">Equipment</a></Link></div>
               <div className="ml-4 mr-2">|</div>
               <div className="ml-3 is-size-5 is-bold is-uppercase "><Link href="/blog"><a className="has-text-success">Blog</a></Link></div>
             </div>

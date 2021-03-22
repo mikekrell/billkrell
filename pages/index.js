@@ -46,7 +46,7 @@ function Home({ equipment, loading } ){
                 </Head>
                 <section className="section has-background-light">
                     <div className="container">
-                        <h1 className="title mt-5">Used Inventory</h1>
+                        <h1 className="title mt-5">Equipment Inventory</h1>
                         <h2 className="subtitle">
                             A complete list of what we currently have in our <strong>Inventory</strong>. If you see anything you like, please contact me.
                     </h2>
