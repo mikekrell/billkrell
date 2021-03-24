@@ -1,10 +1,22 @@
 import moment from 'moment'
+import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 function BlogPost ({post}) {
+    const setDocToHTMLString = (htmlContent) => {
+        const options = {
+            renderNode: {
+                [BLOCKS.PARAGRAPH]: (node, text) => {
+                    console.log(node)
+                    return `<p class="px-4 mt-4 mb-4 mr-3 ml-3">${node.content[0].value}</p>`
+                }
+            }
+        }
+        return `<div style="margin-top:40px"> ${documentToHtmlString(htmlContent, options)} </div>`
+    }
     return (
         <div>
         <section className="section has-background-light">
-            <div className="container">
+            <div className="container flex justify-center items-center">
                 <h1 className="title mt-5">{post[0].fields.title}</h1>
                 <span className="is-flex" style={{alignItems:'center'}}>
                     <figure className="image is-32x32 noheight">
@@ -16,8 +28,8 @@ function BlogPost ({post}) {
             </div>
         </section>
         <section>
-            <div className="container">
-                <div className="mt-5" dangerouslySetInnerHTML={{ __html: documentToHtmlString(post[0].fields.blogContent) }}></div>
+            <div className="container mt-12 bg-red-400">
+                    <div dangerouslySetInnerHTML={{ __html: setDocToHTMLString(post[0].fields.blogContent) }}></div>
             </div>
         </section>
         </div>
