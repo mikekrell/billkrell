@@ -7,13 +7,16 @@ function BlogPost ({post}) {
         const options = {
             renderNode: {
                 [BLOCKS.PARAGRAPH]: (node, text) => {
-                    console.log(node)
                     return `<p class="px-4 mt-4 mb-4 mr-3 ml-3">${node.content[0].value}</p>`
                 }
             }
         }
         return `<div style="margin-top:40px"> ${documentToHtmlString(htmlContent, options)} </div>`
     }
+    const getImageUrl = (post) => {
+        return `${post.fields.pictures.fields.file.url}?w=500&fm=png`
+    }
+    
     return (
         <>
         <Head>
@@ -24,6 +27,7 @@ function BlogPost ({post}) {
             <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
             <meta property="og:title" content={post[0].fields.title} key="ogtitle" />
             <meta property="og:description" content={post[0].fields.blogContent.content[0].value} />
+                <meta property="og:image" content={getImageUrl(post[0])} />
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <div>
