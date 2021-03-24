@@ -34,9 +34,9 @@ function BlogPost ({post}) {
         </Head>
         <div>
         <section className="section has-background-light">
-            <div className="container flex justify-center items-center">
+            <div style={{display:"flex", flexDirection: 'column', alignItems: 'center'}} className="container flex justify-center items-center">
                 <h1 className="title mt-5">{post[0].fields.title}</h1>
-                <span className="is-flex" style={{alignItems:'center'}}>
+                <span className="is-flex -mt-2" style={{alignItems:'center'}}>
                     <figure className="image is-32x32 noheight">
                         <img className="is-rounded" src="/billkrell_headshot.jpeg" />
                     </figure>

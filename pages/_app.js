@@ -26,7 +26,7 @@ function MyApp({ Component, pageProps }) {
   const [int, setInt] = useState(false)
   const [atBottom, setAtBottom] = useState(false)
   const [loading, setLoading] = useState(false);
-  const [payWall, setPayWall] = useState(false);
+  const [payWall, setPayWall] = useState(true);
 
   // useEffect(() => {
   //   const start = () => {
@@ -83,7 +83,6 @@ function MyApp({ Component, pageProps }) {
     })
   }
 
-  
   return (
     <>
     <Head>
