@@ -1,4 +1,5 @@
 import moment from 'moment'
+import Head from 'next/head'
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 function BlogPost ({post}) {
@@ -14,6 +15,17 @@ function BlogPost ({post}) {
         return `<div style="margin-top:40px"> ${documentToHtmlString(htmlContent, options)} </div>`
     }
     return (
+        <>
+        <Head>
+            <title>{`${post[0].fields.title} | Bill Krell's Blog`}</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1" />
+            <meta charSet="utf-8" />
+            <meta name="description" content={post[0].fields.blogContent.content[0].value} />
+            <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
+            <meta property="og:title" content={post[0].fields.title} key="ogtitle" />
+            <meta property="og:description" content={post[0].fields.blogContent.content[0].value} />
+            <link rel="icon" href="/favicon.ico" />
+        </Head>
         <div>
         <section className="section has-background-light">
             <div className="container flex justify-center items-center">
@@ -33,6 +45,7 @@ function BlogPost ({post}) {
             </div>
         </section>
         </div>
+        </>
     )
 }
 
