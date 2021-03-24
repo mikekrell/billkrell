@@ -8,6 +8,10 @@ var contentful = require('contentful');
 
 function Blog({blogPosts}) {
 
+    const generateBlogBlur = (blurb) => {
+        return blurb.substring(0,240) + "..."
+    }
+
     return (
         <div>
         <section className="section has-background-light">
@@ -34,7 +38,7 @@ function Blog({blogPosts}) {
                 <p className="ml-2">Bill Krell</p>
                 <p className="ml-2 is-size-7"> - {moment(post.sys.createdAt).format('MMMM Do YYYY, h:mm a')}</p>
                 </div>
-                <div className="mt-5" style={{flex: "1", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis"}} dangerouslySetInnerHTML={{__html: documentToHtmlString(post.fields.blogContent)}}></div>
+                        <div className="mt-5">{generateBlogBlur(post.fields.blogContent.content[0].content[0].value)}</div>
                 <Link href={`/blog/${post.fields.slug}`}><button className="mt-5 button has-background-success-dark has-text-white">More Info</button></Link>
                 <div style={{width: "100%", height:'2px', backgroundColor: "grey", opacity: '50%', marginTop: '50px'}}></div>
                 </div>
