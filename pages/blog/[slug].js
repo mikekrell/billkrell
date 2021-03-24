@@ -28,6 +28,8 @@ function BlogPost ({post}) {
                 <meta prefix="og: http://ogp.me/ns#" property="og:title" content={post[0].fields.title} key="ogtitle" />
                 <meta prefix="og: http://ogp.me/ns#" property="og:description" content={post[0].fields.blogContent.content[0].value} />
                 <meta prefix="og: http://ogp.me/ns#" property="og:image" content={getImageUrl(post[0])} />
+                <meta prefix="og: http://ogp.me/ns#" property='og:type' content='article' />
+                <meta name="author" content="Bill Krell"></meta>
             <link rel="icon" href="/favicon.ico" />
         </Head>
         <div>
