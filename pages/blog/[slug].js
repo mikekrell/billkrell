@@ -12,15 +12,12 @@ function BlogPost ({post}) {
     useEffect(() => {
         //start for animation paywall
         if (!!router.query.rel) {
-            setTimeout(() => {
-                const hasSeen = localStorage.getItem('seen_popup')
-                if (hasSeen) {
-
-                } else {
-                    setPayWall(true)
-                }
-
-            }, 2000)
+            const hasSeen = localStorage.getItem('seen_popup')
+            if (hasSeen) {
+                setPayWall(false)
+            } else {
+                setPayWall(true)
+            }
         }
     }, [])
 
