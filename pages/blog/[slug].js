@@ -1,8 +1,21 @@
+import {useState, useEffect, useRef} from 'react'
 import moment from 'moment'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 function BlogPost ({post}) {
+    useEffect(()=>{
+        //start for animation paywall
+        if (!!router.query.rel) {
+            setTimeout(() => {
+                setPayWall(true)
+            }, 3500)
+        }
+    }, [])
+    const router = useRouter();
+    const emailInput = useRef(null)
+    const [payWall, setPayWall] = useState(true);
     const setDocToHTMLString = (htmlContent) => {
         const options = {
             renderNode: {
@@ -16,7 +29,26 @@ function BlogPost ({post}) {
     const getImageUrl = (post) => {
         return `${post.fields.pictures.fields.file.url}?w=500&fm=png`
     }
-    
+
+    const subscriptionEvent = async () => {
+        const url = 'https://api.hsforms.com/submissions/v3/integration/submit/8535484/f82ad281-d08d-4adf-a4eb-25313ec4f71c'
+        fetch(url, { 
+            method: "POST", 
+            data: JSON.stringify({ "fields": [
+                {
+                    "name" : "email",
+                    "value": emailInput.current.value
+                }],
+                "context" : {
+                    "pageUri" : 'www.billkrell.com',
+                    "pageName" : "Bill Krell"
+                }
+            }),
+        }).then(data => {
+            setPayWall(false)
+        })
+    }
+
     return (
         <>
         <Head>
@@ -32,6 +64,42 @@ function BlogPost ({post}) {
                 <meta name="author" content="Bill Krell"></meta>
             <link rel="icon" href="/favicon.ico" />
         </Head>
+            {payWall ?
+                <div className="newsetter-signup">
+                    <div className="card">
+                        <div className="card-content">
+                            <section className="section has-background-dark">
+                                <div className="columns">
+                                    <div className="column">
+                                        <div className="title has-text-centered ">
+                                            <h2 className="has-text-white">Subscribe to the Newsletter!</h2>
+                                            <p className="subtitle has-text-white pt-1">Stay up to date with all our inventory as we receive it.</p>
+                                        </div>
+
+                                        <div className="field is-grouped">
+                                            <p className="control is-expanded">
+                                                <input ref={emailInput} className="input" type="email" placeholder="Enter your email" />
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                        <footer className="card-footer">
+                            <p onClick={() => setPayWall(false)} className="card-footer-item footer-button">
+                                <span>
+                                    Not right now
+                </span>
+                            </p>
+                            <p onClick={subscriptionEvent} className="card-footer-item has-background-success-dark has-text-white footer-button">
+                                <span>
+                                    Subscribe
+                             </span>
+                            </p>
+                        </footer>
+                    </div>
+                </div> : null}
         <div>
         <section className="section has-background-light">
             <div style={{display:"flex", flexDirection: 'column', alignItems: 'center'}} className="container flex justify-center items-center">

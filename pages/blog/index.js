@@ -1,8 +1,5 @@
 import Link from 'next/link'
-import {useState} from 'react'
 import moment from 'moment'
-import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
-import { faRProject } from '@fortawesome/free-brands-svg-icons';
 
 var contentful = require('contentful');
 
