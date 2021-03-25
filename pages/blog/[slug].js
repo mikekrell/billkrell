@@ -5,17 +5,25 @@ import { useRouter } from 'next/router'
 import { BLOCKS } from '@contentful/rich-text-types';
 import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 function BlogPost ({post}) {
-    useEffect(()=>{
+    const router = useRouter();
+    const emailInput = useRef(null)
+    const [payWall, setPayWall] = useState(false);
+
+    useEffect(() => {
         //start for animation paywall
         if (!!router.query.rel) {
             setTimeout(() => {
-                setPayWall(true)
-            }, 3500)
+                const hasSeen = localStorage.getItem('seen_popup')
+                if (hasSeen) {
+
+                } else {
+                    setPayWall(true)
+                }
+
+            }, 2000)
         }
     }, [])
-    const router = useRouter();
-    const emailInput = useRef(null)
-    const [payWall, setPayWall] = useState(true);
+
     const setDocToHTMLString = (htmlContent) => {
         const options = {
             renderNode: {
@@ -31,24 +39,68 @@ function BlogPost ({post}) {
     }
 
     const subscriptionEvent = async () => {
-        const url = 'https://api.hsforms.com/submissions/v3/integration/submit/8535484/f82ad281-d08d-4adf-a4eb-25313ec4f71c'
-        fetch(url, { 
-            method: "POST", 
-            data: JSON.stringify({ "fields": [
-                {
-                    "name" : "email",
-                    "value": emailInput.current.value
-                }],
-                "context" : {
-                    "pageUri" : 'www.billkrell.com',
-                    "pageName" : "Bill Krell"
-                }
-            }),
-        }).then(data => {
-            setPayWall(false)
-        })
-    }
+        localStorage.setItem('seen_popup', true)
+        // Create the new request 
+        var xhr = new XMLHttpRequest();
+        var url = 'https://api.hsforms.com/submissions/v3/integration/submit/8535484/f82ad281-d08d-4adf-a4eb-25313ec4f71c'
 
+        // Example request JSON:
+        var data = {
+            "submittedAt": Date.now(),
+            "fields": [
+                {
+                    "name": "email",
+                    "value": emailInput.current.value
+                }
+            ],
+            "context": {
+                "pageUri": "www.billkrell.com/blog",
+                "pageName": "Bill Krell"
+            },
+            "legalConsentOptions": { // Include this object when GDPR options are enabled
+                "consent": {
+                    "consentToProcess": true,
+                    "text": "I agree to allow Example Company to store and process my personal data.",
+                    "communications": [
+                        {
+                            "value": true,
+                            "subscriptionTypeId": 999,
+                            "text": "I agree to receive marketing communications from Example Company."
+                        }
+                    ]
+                }
+            }
+        }
+
+        var final_data = JSON.stringify(data)
+
+        xhr.open('POST', url);
+        // Sets the value of the 'Content-Type' HTTP request headers to 'application/json'
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                setPayWall(false)
+                alert("Thank you for signing up!"); // Returns a 200 response if the submission is successful.
+            } else if (xhr.readyState == 4 && xhr.status == 400) {
+                alert(xhr.responseText); // Returns a 400 error the submission is rejected.
+            } else if (xhr.readyState == 4 && xhr.status == 403) {
+                alert(xhr.responseText); // Returns a 403 error if the portal isn't allowed to post submissions.
+            } else if (xhr.readyState == 4 && xhr.status == 404) {
+                alert(xhr.responseText); //Returns a 404 error if the formGuid isn't found
+            }
+        }
+
+
+        // Sends the request 
+
+        xhr.send(final_data)
+
+    }
+    const closePaywall = () => {
+        localStorage.setItem('seen_popup', true)
+        setPayWall(false)
+    }
     return (
         <>
         <Head>
@@ -87,7 +139,7 @@ function BlogPost ({post}) {
                             </section>
                         </div>
                         <footer className="card-footer">
-                            <p onClick={() => setPayWall(false)} className="card-footer-item footer-button">
+                            <p onClick={closePaywall} className="card-footer-item footer-button">
                                 <span>
                                     Not right now
                 </span>
