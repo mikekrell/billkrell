@@ -7,7 +7,7 @@ import { documentToHtmlString } from '@contentful/rich-text-html-renderer';
 function BlogPost ({post}) {
     const router = useRouter();
     const emailInput = useRef(null)
-    const [payWall, setPayWall] = useState(false);
+    const [payWall, setPayWall] = useState(true);
 
     useEffect(() => {
         //start for animation paywall
@@ -15,11 +15,15 @@ function BlogPost ({post}) {
             const hasSeen = localStorage.getItem('seen_popup')
             if (hasSeen) {
                 setPayWall(false)
-            } else {
-                setPayWall(true)
             }
         }
-    }, [])
+    }, [payWall])
+
+    useEffect(()=>{
+        if(!router.query.rel) {
+            setPayWall(false)
+        }
+    },[])
 
     const setDocToHTMLString = (htmlContent) => {
         const options = {

@@ -57,10 +57,10 @@ function Home({ equipment, loading } ){
                         <div className="table-container">
                             <div className="columns is-multiline">
                                 {equipment.map((equip, i) => (
-                                    <div className="column is-one-third-desktop is-half-tablet" >
+                                    <div id={equip.sys.id} className="column is-one-third-desktop is-half-tablet" >
                                         <Link href={`/used/${equip.fields.slug}`} as={`/used/${equip.fields.slug}`}>
                                         <a>
-                                            <EquipmentCard swipeLeft={swipeLeft} key={i} equip={equip}></EquipmentCard> 
+                                                <EquipmentCard id={equip.sys.id} swipeLeft={swipeLeft} key={equip.sys.id} equip={equip}></EquipmentCard>
                                         </a>
                                     </Link>
                                     </div>

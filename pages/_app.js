@@ -25,8 +25,7 @@ function MyApp({ Component, pageProps }) {
   const [menu, setMenu] = useState(false)
   const [int, setInt] = useState(false)
   const [atBottom, setAtBottom] = useState(false)
-  const [loading, setLoading] = useState(false);
-  const [payWall, setPayWall] = useState(false);
+  const [loading, setLoading] = useState(true);
 
   // useEffect(() => {
   //   const start = () => {
@@ -52,11 +51,6 @@ function MyApp({ Component, pageProps }) {
       console.log(e.key)
     })
     //start for animation paywall
-    if (!!router.query.rel) {
-      setTimeout(() => {
-        setPayWall(true)
-      }, 3500)
-    }
 
     //set pulse of button (setInterval keeps pulse, setTimeout sets delay)
     setInterval(()=>{
@@ -136,7 +130,7 @@ function MyApp({ Component, pageProps }) {
     xhr.send(final_data)
 
   }
-  
+
   return (
     <>
     <Head>
@@ -155,42 +149,7 @@ function MyApp({ Component, pageProps }) {
         />
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJSCN7S" height="0" width="0" style="display:none;visibility:hidden;"></iframe>` }} />
     </Head>
-      {payWall ? 
-      <div className="newsetter-signup">
-          <div className="card">
-            <div className="card-content">
-              <section className="section has-background-dark">
-                <div className="columns">
-                  <div className="column">
-                    <div className="title has-text-centered ">
-                      <h2 className="has-text-white">Subscribe to the Newsletter!</h2>
-                      <p className="subtitle has-text-white pt-1">Stay up to date with all our inventory as we receive it.</p>
-                    </div>
 
-                      <div className="field is-grouped">
-                        <p className="control is-expanded">
-                        <input ref={emailInput} className="input" type="email" placeholder="Enter your email" />
-                        </p>
-                      </div>
-
-                  </div>
-                </div>
-              </section>
-            </div>
-            <footer className="card-footer">
-              <p onClick={() => setPayWall(false)}className="card-footer-item footer-button">
-                <span>
-                  Not right now
-                </span>
-              </p>
-              <p onClick={subscriptionEvent} className="card-footer-item has-background-success-dark has-text-white footer-button">
-                <span>
-                  Subscribe
-                </span>
-              </p>
-            </footer>
-          </div>
-      </div> : null }
       <nav className="navbar is-fixed-top has-background-light container is-flex is-align-items-center is-justify-content-space-between"  role="navigation" aria-label="main navigation" style={{width: '100vw'}}>
           <div className="navbar-brand">
             <a className="navbar-item">
