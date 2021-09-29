@@ -25,7 +25,7 @@ function Subscribe () {
             <div className="columns">
                 <div className="column">
                     <div className="title has-text-centered ">
-                        <h2 className="has-text-white">Subscribe to the Newsletter</h2>
+                        <h2 className="has-text-white">Subscribe to the Newsletter!</h2>
                         <p className="subtitle has-text-white pt-1">Stay up to date with all our inventory as we receive it.</p>
                     </div>
                     <form onSubmit={(e)=>handleSubmit(e)}>

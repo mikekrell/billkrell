@@ -25,7 +25,8 @@ function MyApp({ Component, pageProps }) {
   const [menu, setMenu] = useState(false)
   const [int, setInt] = useState(false)
   const [atBottom, setAtBottom] = useState(false)
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [payWall, setPayWall] = useState(false);
 
   // useEffect(() => {
   //   const start = () => {
@@ -51,6 +52,11 @@ function MyApp({ Component, pageProps }) {
       console.log(e.key)
     })
     //start for animation paywall
+    if (!!router.query.rel) {
+      setTimeout(() => {
+        setPayWall(true)
+      }, 3500)
+    }
 
     //set pulse of button (setInterval keeps pulse, setTimeout sets delay)
     setInterval(()=>{
@@ -72,65 +78,12 @@ function MyApp({ Component, pageProps }) {
   }, [scroll?.scrollY])
 
   const subscriptionEvent = async () => {
-    localStorage.setItem('seen_popup', true)
-    // Create the new request 
-    var xhr = new XMLHttpRequest();
-    var url = 'https://api.hsforms.com/submissions/v3/integration/submit/8535484/f82ad281-d08d-4adf-a4eb-25313ec4f71c'
-
-    // Example request JSON:
-    var data = {
-      "submittedAt": Date.now(),
-      "fields": [
-        {
-          "name": "email",
-          "value": emailInput.current.value
-        }
-      ],
-      "context": {
-        "pageUri": "www.billkrell.com/blog",
-        "pageName": "Bill Krell"
-      },
-      "legalConsentOptions": { // Include this object when GDPR options are enabled
-        "consent": {
-          "consentToProcess": true,
-          "text": "I agree to allow Example Company to store and process my personal data.",
-          "communications": [
-            {
-              "value": true,
-              "subscriptionTypeId": 999,
-              "text": "I agree to receive marketing communications from Example Company."
-            }
-          ]
-        }
-      }
-    }
-
-    var final_data = JSON.stringify(data)
-
-    xhr.open('POST', url);
-    // Sets the value of the 'Content-Type' HTTP request headers to 'application/json'
-    xhr.setRequestHeader('Content-Type', 'application/json');
-
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState == 4 && xhr.status == 200) {
-        setPayWall(false)
-        alert("Thank you for signing up!"); // Returns a 200 response if the submission is successful.
-      } else if (xhr.readyState == 4 && xhr.status == 400) {
-        alert(xhr.responseText); // Returns a 400 error the submission is rejected.
-      } else if (xhr.readyState == 4 && xhr.status == 403) {
-        alert(xhr.responseText); // Returns a 403 error if the portal isn't allowed to post submissions.
-      } else if (xhr.readyState == 4 && xhr.status == 404) {
-        alert(xhr.responseText); //Returns a 404 error if the formGuid isn't found
-      }
-    }
-
-
-    // Sends the request 
-
-    xhr.send(final_data)
-
+    fetch('/api/subscribe', { method: "PUT", body: JSON.stringify({ email: emailInput.current.value }) }).then(data => {
+      setPayWall(false)
+    })
   }
 
+  
   return (
     <>
     <Head>
@@ -149,25 +102,56 @@ function MyApp({ Component, pageProps }) {
         />
         <noscript dangerouslySetInnerHTML={{ __html: `<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PJSCN7S" height="0" width="0" style="display:none;visibility:hidden;"></iframe>` }} />
     </Head>
+      {payWall ? 
+      <div className="newsetter-signup">
+          <div className="card">
+            <div className="card-content">
+              <section className="section has-background-dark">
+                <div className="columns">
+                  <div className="column">
+                    <div className="title has-text-centered ">
+                      <h2 className="has-text-white">Subscribe to the Newsletter!</h2>
+                      <p className="subtitle has-text-white pt-1">Stay up to date with all our inventory as we receive it.</p>
+                    </div>
 
-      <nav className="navbar is-fixed-top has-background-light container is-flex is-align-items-center is-justify-content-space-between"  role="navigation" aria-label="main navigation" style={{width: '100vw'}}>
+                      <div className="field is-grouped">
+                        <p className="control is-expanded">
+                        <input ref={emailInput} className="input" type="email" placeholder="Enter your email" />
+                        </p>
+                      </div>
+
+                  </div>
+                </div>
+              </section>
+            </div>
+            <footer className="card-footer">
+              <p onClick={() => setPayWall(false)}className="card-footer-item footer-button">
+                <span>
+                  Not right now
+                </span>
+              </p>
+              <p onClick={subscriptionEvent} className="card-footer-item has-background-success-dark has-text-white footer-button">
+                <span>
+                  Subscribe
+                </span>
+              </p>
+            </footer>
+          </div>
+      </div> : null }
+      <nav className="navbar is-fixed-top has-background-light"  role="navigation" aria-label="main navigation">
           <div className="navbar-brand">
-            <a className="navbar-item">
+            <a className="navbar-item ml-5">
               <Link href="/">
               <a>
-                <img alt="nav-logo" src="/billkrell_logo.png" className="image" style={{height:'20px'}}></img>
+                <img alt="nav-logo" src="/billkrell_logo.png" height="50px" className="image"></img>
               </a>
               </Link>
             </a>
           </div>
-          <div className="is-flex">
-            <div className="navbar-start is-flex" style={{ alignItems: 'center', justifyContent: 'center' }}>
-              <div className="ml-4 is-size-5 is-bold is-uppercase"><Link href="/"><a className="has-text-success">Equipment</a></Link></div>
-              <div className="ml-4 mr-2">|</div>
-              <div className="ml-3 is-size-5 is-bold is-uppercase "><Link href="/blog"><a className="has-text-success">Blog</a></Link></div>
-            </div>
-            <div className="navbar-end">
-            </div>
+          <div className="navbar-start">
+
+          </div>
+          <div className="navbar-end">
           </div>
       </nav>
       <Component loading={loading} {...pageProps} />

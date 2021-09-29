@@ -46,7 +46,7 @@ function EquipmentCard({ equip, swipeLeft }){
                         <h1 className="is-size-2 has-text-white has-text-weight-bold">{equip.fields.title}</h1>
                     {showContent ? null :
                         <div className="column is-centered more-info-content-active">
-                            <table className="table has-text-white is-fullwidth table-trans is-size-6" style={{marginLeft: "-10px"}}>
+                            <table className="table has-text-white is-fullwidth table-trans is-size-6">
                                 <tr>
                                     <th className="is-size-6 has-text-white">Hours</th>
                                     <th className="is-size-6 has-text-white">Weight</th>

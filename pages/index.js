@@ -38,15 +38,15 @@ function Home({ equipment, loading } ){
                     <meta charSet="utf-8" />
                     <meta name="description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." />
 
-                <meta prefix="og: http://ogp.me/ns#" property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
-                <meta prefix="og: http://ogp.me/ns#" property="og:title" content="Used Inventory - Bill Krell / Feenaughty" key="ogtitle" />
-                <meta prefix="og: http://ogp.me/ns#" property="og:description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." key="ogdesc" />
+                    <meta property="og:site_name" content="Bill Krell / Feenaughty" key="ogsitename" />
+                    <meta property="og:title" content="Used Inventory - Bill Krell / Feenaughty" key="ogtitle" />
+                    <meta property="og:description" content="Our used equipment available for purchase. Sign up for my weekly newsletter, and get access to all our new/used inventory on a regular basis, as well as industry info." key="ogdesc" />
                     <link rel="icon" href="/favicon.ico" />
 
                 </Head>
-                <section className="section has-background-light">
+                <section className="section has-background-light mt-2">
                     <div className="container">
-                        <h1 className="title mt-5">Equipment Inventory</h1>
+                        <h1 className="title mt-5">Used Inventory</h1>
                         <h2 className="subtitle">
                             A complete list of what we currently have in our <strong>Inventory</strong>. If you see anything you like, please contact me.
                     </h2>
@@ -57,10 +57,10 @@ function Home({ equipment, loading } ){
                         <div className="table-container">
                             <div className="columns is-multiline">
                                 {equipment.map((equip, i) => (
-                                    <div id={equip.sys.id} className="column is-one-third-desktop is-half-tablet" >
+                                    <div className="column is-one-third-desktop is-half-tablet" >
                                         <Link href={`/used/${equip.fields.slug}`} as={`/used/${equip.fields.slug}`}>
                                         <a>
-                                                <EquipmentCard id={equip.sys.id} swipeLeft={swipeLeft} key={equip.sys.id} equip={equip}></EquipmentCard>
+                                            <EquipmentCard swipeLeft={swipeLeft} key={i} equip={equip}></EquipmentCard> 
                                         </a>
                                     </Link>
                                     </div>
